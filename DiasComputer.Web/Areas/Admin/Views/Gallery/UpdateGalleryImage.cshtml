@@ -1,0 +1,52 @@
+﻿@model DiasComputer.Core.DTOs.Admin.GalleriesViewModel
+@{
+    ViewData["Title"] = "بروزرسانی تصویر گالری";
+}
+
+<div class="margin-pages">
+    <h1>بروزرسانی تصویر</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateGalleryImage" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="ProductId" class="form-control" />
+                <input type="hidden" asp-for="GalleryId" class="form-control" />
+                <input type="hidden" asp-for="ImgName" class="form-control" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label">تصویر فعلی</label>
+                        <img src="/images/productThumbnailsGalleries/@Model.ImgName" class="form-control" />
+                        <span asp-validation-for="ImgName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ImgAltName" class="control-label"></label>
+                        <input asp-for="ImgAltName" class="form-control" />
+                        <span asp-validation-for="ImgAltName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="SelectedImage" class="control-label"></label>
+                        <input type="file" asp-for="SelectedImage" class="form-control" />
+                        <span asp-validation-for="SelectedImage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="بروزرسانی تصویر" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="GalleryIndex" asp-route-productId="@Model.ProductId">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

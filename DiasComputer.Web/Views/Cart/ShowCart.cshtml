@@ -1,0 +1,147 @@
+﻿@model List<DiasComputer.Core.DTOs.Cart.CartItemsViewModel>
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+@if (Model==null)
+{
+    <main class="cart default">
+        <div class="container text-center">
+            <div class="cart-empty">
+                <div class="cart-empty-icon">
+                    <i class="now-ui-icons shopping_basket"></i>
+                </div>
+                <div class="cart-empty-title">سبد خرید شما خالیست!</div>
+            </div>
+        </div>
+    </main>
+}
+else
+{
+    <main class="cart-page default">
+        <div class="container">
+            <div class="row">
+                <div class="cart-page-content col-xl-9 col-lg-8 col-md-12 order-1">
+                    <div class="cart-page-title">
+                        <h1>سبد خرید</h1>
+                    </div>
+                    <div class="table-responsive checkout-content default">
+                        <table class="table">
+                            <thead>
+                            <tr class="checkout-item">
+                                <th>تصویر محصول</th>
+                                <th>نام محصول</th>
+                                <th>رنگ</th>
+                                <th>گارانتی</th>
+                                <th>تعداد</th>
+                                <th>قیمت واحد</th>
+                                <th>قیمت کل</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="checkout-item">
+                                    <td>
+                                        <img src="/images/productThumbnailImages/@item.ProductImage" alt="@item.ProductName">
+                                        <a class="checkout-btn-remove" href="/Cart/Remove/@item.OrderId/@item.DetailId" style="margin-right: 15px;"></a>
+                                    </td>
+                                    <td>
+                                        <h3 class="checkout-title">
+                                            @item.ProductName
+                                        </h3>
+                                    </td>
+                                    <td>@item.ProductColor</td>
+                                    <td>@item.ProductWarranty</td>
+                                    <td>@item.Count عدد</td>
+                                    <td>@item.ProductPrice.ToString("#,0") تومان</td>
+                                    <td>@((item.ProductPrice * item.Count).ToString("#,0")) تومان</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <aside class="cart-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-2">
+                    <div class="checkout-aside">
+                        <div class="checkout-summary">
+                            <div class="checkout-summary-main">
+                                <ul class="checkout-summary-summary">
+                                    <li><span>مبلغ کل (@Model.Sum(o=>o.Count) کالا)</span><span>@Model.Sum(o=>o.ProductPrice*o.Count).ToString("#,0") تومان</span></li>
+                                    <li>
+                                        <span>هزینه ارسال</span>
+                                        @if (@Model.Sum(o=>o.ProductPrice*o.Count)>300000)
+                                        {
+                                            <span>
+                                                رایگان
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>بیست و پنج هزار تومان</span>
+                                        }
+                                    </li>
+                                </ul>
+                                <div class="checkout-summary-devider">
+                                    <div></div>
+                                </div>
+                                <div class="checkout-summary-content">
+                                    <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+                                    <div class="checkout-summary-price-value">
+                                        <span class="checkout-summary-price-value-amount">@ViewBag.TotalPrice.ToString("#,0") تومان</span>
+                                    </div>
+                                    <a href="#" class="selenium-next-step-shipping">
+                                        <div class="parent-btn">
+                                            <a class="dk-btn dk-btn-info" href="/Cart/Form">
+                                                ادامه ثبت سفارش
+                                                <i class="now-ui-icons shopping_basket"></i>
+                                            </a>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <span>
+                                            کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی
+                                            را تکمیل
+                                            کنید.
+                                        </span>
+                                        <span class="wiki wiki-holder">
+                                            <span class="wiki-sign"></span>
+                                            <div class="wiki-container is-right">
+                                                <div class="wiki-arrow"></div>
+                                                <p class="wiki-text">
+                                                    محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش
+                                                    برای شما رزرو
+                                                    می‌شوند. در
+                                                    صورت عدم ثبت سفارش، دیجی کالا هیچگونه مسئولیتی در قبال تغییر
+                                                    قیمت یا موجودی
+                                                    این کالاها
+                                                    ندارد.
+                                                </p>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-feature-aside">
+                            <ul>
+                                <li class="checkout-feature-aside-item checkout-feature-aside-item-guarantee">
+                                    هفت روز
+                                    ضمانت تعویض
+                                </li>
+                                <li class="checkout-feature-aside-item checkout-feature-aside-item-cash">
+                                    پرداخت در محل با
+                                    کارت بانکی در تهران
+                                </li>
+                                <li class="checkout-feature-aside-item checkout-feature-aside-item-express">
+                                    تحویل اکسپرس
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+}
+

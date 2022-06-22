@@ -1,0 +1,72 @@
+﻿@model List<DiasComputer.DataLayer.Entities.SiteResources.SiteContactDetail>
+@{
+    ViewData["Title"] = "تماس با ما";
+}
+
+<div class="margin-pages">
+    <h1>اطلاعات تماس با ما</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="AddNewDetail">ثبت اطلاعات جدید</a>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().SCD_TypeTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().SCD_Value)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SCD_TypeTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SCD_Value)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateDetail" asp-route-SCD_Id="@item.SCD_Id">ویرایش</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.SCD_Id)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف اطلاعات</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این اطلاعات اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteDetail" method="get">
+                        <input id="SCD_Id" type="hidden" name="SCD_Id" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+<script>
+    function SendID(SCD_Id) {
+        var SCD_IdValue = document.getElementById("SCD_Id");
+        SCD_IdValue.value = SCD_Id;
+    }
+</script>

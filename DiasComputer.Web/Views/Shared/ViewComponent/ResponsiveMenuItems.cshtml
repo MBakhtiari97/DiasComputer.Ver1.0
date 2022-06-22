@@ -1,0 +1,20 @@
+﻿@model List<DiasComputer.DataLayer.Entities.Groups.Group>
+<ul class="navbar-nav default">
+    @foreach (var group in Model.Where(g => g.ParentId == null))
+    {
+        <li class="sub-menu">
+            <a href=#>@group.GroupTitle</a>
+            @if (Model.Any(g => g.ParentId == group.GroupId))
+            {
+                <ul>
+                    @foreach (var subGroup in Model.Where(g => g.ParentId == group.GroupId))
+                    {
+                        <li>
+                            <a href="#">@subGroup.GroupTitle</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>

@@ -1,0 +1,48 @@
+﻿@model DiasComputer.Core.DTOs.Product.ProductFeaturesViewModel
+@{
+    ViewData["Title"] = "ویرایش اطلاعات";
+}
+
+<div class="margin-pages">
+    <h1>ویرایش اطلاعات</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateFeature" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
+                <input type="hidden" asp-for="FeatureId" value="@Model.FeatureId" />
+                <input type="hidden" asp-for="ParentId" value="@Model.ParentId" />
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FeatureTitle" class="control-label"></label>
+                        <input asp-for="FeatureTitle" class="form-control" />
+                        <span asp-validation-for="FeatureTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="FeatureDescription" class="control-label"></label>
+                        <input asp-for="FeatureDescription" class="form-control" />
+                        <span asp-validation-for="FeatureDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsShortFeature" class="control-label"></label>
+                        <br />
+                        <input asp-for="IsShortFeature" />
+                        <span asp-validation-for="IsShortFeature" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="ویرایش" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="FeaturesIndex" asp-controller="Feature" asp-route-productId="@Model.ProductId">انصراف</a>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model List<DiasComputer.Core.DTOs.Cart.CartItemsViewModel>
+@if (Model != null)
+{
+    <div class="basket-header">
+        <div class="basket-total text-center">
+            <span>جمع سبد خرید:</span>
+            <span> @Model.Sum(b=>b.ProductPrice*b.Count).ToString("#,0")</span>
+            <span>تومان</span>
+        </div>
+    </div>
+    <ul class="basket-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href=# class="basket-item">
+                    <div class="basket-item-content">
+                        <div class="basket-item-image">
+                            <img alt="" src="/images/productThumbnailImages/@item.ProductImage">
+                        </div>
+                        <div class="basket-item-details">
+                            <div class="basket-item-title">
+                                @item.ProductName
+                            </div>
+                            <div class="basket-item-params">
+                                <div class="basket-item-props">
+                                    <span> @item.Count عدد</span>
+                                    <span>رنگ @item.ProductColor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+    <a href="/Cart" class="basket-submit">مشاهده سبد خرید</a>
+}
+else
+{
+    <div class="basket-header">
+        <div class="basket-total text-center">
+            <span>سبد خرید شما خالی است !</span>
+        </div>
+    </div>
+    <ul class="basket-list text-center">
+        <li>
+            <img src="/main-resources/assets/img/EmptyCart.png" style="margin-top: 30px;" />
+        </li>
+    </ul>
+}

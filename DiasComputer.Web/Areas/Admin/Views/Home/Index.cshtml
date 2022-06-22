@@ -1,0 +1,293 @@
+﻿@using DiasComputer.Core.DTOs.Admin
+@using DiasComputer.Core.DTOs.Orders
+@using DiasComputer.Utility.Convertors
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    List<UserViewModel.LatestRegisteredUsers> latestUsers = ViewBag.LatestUsers;
+    List<RecentOrdersViewModel> latestOrders = ViewBag.RecentOrders;
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">داشبورد</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="/Admin">پنل مدیریت</a></li>
+                    <li class="breadcrumb-item">صفحه اصلی</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fa fa-hourglass"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">سفارشات در انتظار پرداخت</span>
+                <span class="info-box-number">
+                    @latestOrders.Count()
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-hourglass-3"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">نظرات در انتظار تایید</span>
+                <span class="info-box-number">@ViewBag.RecentCommentsCount</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fa fa-shopping-cart"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">کل محصولات فروخته شده</span>
+                <span class="info-box-number">
+                    @ViewBag.TotalSoldProducts
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">اعضای جدید</span>
+                <span class="info-box-number">@ViewBag.LatestUsersCount</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">گزارش ماهیانه</h5>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-wrench"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-tool" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+
+                        <div class="progress-group">
+                            تعداد کل سفارشات در این ماه
+                            <span class="float-left">@ViewBag.TotalMonthOrders</span>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-primary"
+                                     style="@((ViewBag.TotalMonthOrders < 100) ? $"width: {ViewBag.TotalMonthOrders}%" : $"width:{ViewBag.TotalMonthOrders / 100}%")">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.progress-group -->
+
+                        <div class="progress-group">
+                            تعداد کل نظرات محصولات در این ماه
+                            <span class="float-left">@ViewBag.TotalMonthReviews</span>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-danger"
+                                     style="@((ViewBag.TotalMonthReviews < 100) ? $"width: {ViewBag.TotalMonthReviews}%" : $"width:{ViewBag.TotalMonthReviews / 100}%")">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /.progress-group -->
+                        <div class="progress-group">
+                            <span class="progress-text">تعداد کل محصولات بازگشتی در این ماه</span>
+                            <span class="float-left">@ViewBag.TotalMonthProductRefers</span>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-success"
+                                     style="@((ViewBag.TotalMonthProductRefers < 100) ? $"width: {ViewBag.TotalMonthProductRefers}%" : $"width:{ViewBag.TotalMonthProductRefers / 100}%")">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.progress-group -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-6">
+                        <div class="description-block border-left">
+                            <h5 class="description-header">@ViewBag.MonthEarnings.ToString("#,0") تومان</h5>
+                            <span class="description-text">فروش کل ماهانه</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-6 col-6">
+                        <div class="description-block">
+                            <h5 class="description-header">@ViewBag.MonthSoldProducts محصول</h5>
+                            <span class="description-text">تعداد محصولات فروخته شده ماهانه</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<div class="row">
+    <!-- Left col -->
+    <div class="col-md-12">
+
+        <div class="row">
+            <div class="col-12 col-md-12">
+                <!-- USERS LIST -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">آخرین اعضا</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <ul class="users-list clearfix">
+                            @if (latestUsers != null)
+                            {
+                                @foreach (var user in latestUsers)
+                                {
+                                    <li>
+                                        <img src="/images/userAvatars/@user.UserAvatar" alt="@user.UserName" class="img-thumbnail img-size-64">
+                                        <a class="users-list-name mt-2">@user.UserName</a>
+                                        <span class="users-list-date">@user.RegisterDate.ToShamsi()</span>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="text-center">
+                                    <h3>در این ماه عضو جدیدی ثبت نام نکرده است !</h3>
+                                </li>
+                            }
+                        </ul>
+                        <!-- /.users-list -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer text-center">
+                        <a href="/Admin/User">مشاهده همه کاربران</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!--/.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title">سفارشات در انتظار پردازش</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="table-responsive text-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>شناسه سفارش</th>
+                                <th>مبلغ</th>
+                                <th>وضعیت</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (latestOrders != null)
+                            {
+                                @foreach (var order in latestOrders)
+                                {
+                                    <tr>
+                                        <td><a href="/Admin/Order/ProcessOrder?orderId=@order.OrderId&userId=@order.UserId">DC-@order.OrderId</a></td>
+                                        <td>@order.OrderSum.ToString("#,0") تومان</td>
+                                        <td><span class="badge badge-success">پرداخت شده</span></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-success" href="/Admin/Order/ProcessOrder?orderId=@order.OrderId&userId=@order.UserId" >
+                                                پردازش
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <a href="/Admin/Order/OrdersHistory" class="btn btn-sm btn-secondary float-right">همه سفارشات</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

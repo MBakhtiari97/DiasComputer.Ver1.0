@@ -1,0 +1,63 @@
+﻿@model DiasComputer.DataLayer.Entities.Users.PostDetail
+@{
+    ViewData["Title"] = "بروزرسانی اطلاعات";
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12">
+                            <h4 class="title-tab-content">بروزرسانی اطلاعات پستی</h4>
+                        </div>
+                        <div class="content-section default">
+                            <div class="row">
+                            </div>
+                            <form class="form-account" asp-action="UpdatePostDetails">
+                                <input asp-for="UserId" type="hidden" />
+                                <input asp-for="PD_Id" type="hidden" />
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">شهر محل سکونت</div>
+                                        <div class="form-account-row">
+                                            <input asp-for="City" class="input-field text-right" type="text" placeholder="شهر محل سکونت خود را وارد نمایید">
+                                            <span asp-validation-for="City" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">آدرس</div>
+                                        <div class="form-account-row">
+                                            <input asp-for="Address" class="input-field text-right" type="text" placeholder="آدرس خود را وارد نمایید">
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">کد پستی</div>
+                                        <div class="form-account-row">
+                                            <input asp-for="ZipCode" class="input-field text-right" type="text" placeholder="کد پستی خود را وارد نمایید">
+                                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">شماره تماس</div>
+                                        <div class="form-account-row">
+                                            <input asp-for="PhoneNumber" class="input-field text-right" type="text" placeholder="شماره تماس خود را وارد نمایید">
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-default btn-lg" type="submit">ذخیره</button>
+                                    <a class="btn btn-default btn-lg" href="/MyProfile/PostDetails">انصراف</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>

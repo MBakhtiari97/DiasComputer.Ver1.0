@@ -1,0 +1,398 @@
+﻿@using DiasComputer.DataLayer.Entities.Products
+@using DiasComputer.Core.DTOs.Product
+@using DiasComputer.Utility.Compute
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims
+@model DiasComputer.Core.DTOs.Product.SingleProductViewModel
+@inject IConfiguration Configuration
+
+@{
+    ViewData["Title"] = Model.ProductName;
+    List<ShortFeaturesViewModel> shortFeatures = ViewBag.ShortFeatures;
+    List<Feature> featrues = ViewBag.Features;
+    List<Gallery> galleries = ViewBag.Galleries;
+}
+
+@section Metas
+{
+    <meta name="description" content="@Model.ShortDescription" />
+    <meta property="og:title" content="@Model.ProductName | @Model.ProductEngName" />
+    <meta property="og:description" content="@Model.ShortDescription" />
+    <meta property="og:url" content="@Configuration["Address"]Products/@Model.ProductId/" />
+}
+
+<main class="single-product default">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="/"><span>فروشگاه اینترنتی دیاس کامپیوتر</span></a>
+                        </li>
+                        <li>
+                            <a href="/Products?groupId=@Model.GroupId"><span>@ViewBag.GroupName</span></a>
+                        </li>
+                        @if (@ViewBag.SubGroupName != null)
+                        {
+                            <li>
+                                <a href="/Products?groupId=@Model.SubGroupId"><span>@ViewBag.SubGroupName</span></a>
+                            </li>
+                        }
+                        <li>
+                            <span>@Model.ProductName</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <article class="product">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="product-gallery default">
+                                <div class="zoomWrapper" style="height: 411px; width: 411px;"><img class="zoom-img" id="img-product-zoom" src="/images/productImages/@Model.ProductImage" style="position: absolute; max-height: 300px;"></div>
+                                @if (galleries.Any())
+                                {
+                                    <div id="gallery_01f" style="width:500px;float:left;">
+                                        <ul class="gallery-items">
+                                            @foreach (var item in galleries)
+                                            {
+                                                <li>
+                                                    <a href="#">
+                                                        <img onclick="changeImage('/images/productGalleries/@item.ImgName')" src="/images/productThumbnailsGalleries/@item.ImgName" height="100">
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                            <ul class="gallery-options">
+                                <li>
+                                    <a href="/MyProfile/WishList/Add/@Model.ProductId">
+                                        <button class="add-favorites"><i class="fa fa-heart"></i></button>
+                                    </a>
+                                    <span class="tooltip-option">افزودن به علاقمندی</span>
+                                </li>
+                                <li>
+                                    <button data-toggle="modal" data-target="#myModal"><i class="fa fa-share-alt"></i></button>
+                                    <span class="tooltip-option">اشتراک گذاری</span>
+                                </li>
+                            </ul>
+                            <!-- Modal Core -->
+                            <div class="modal-share modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title" id="myModalLabel">اشتراک گذاری</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-share">
+                                                <div class="form-share-title">اشتراک گذاری در شبکه های اجتماعی</div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <ul class="btn-group-share">
+                                                            <li><a href="https://twitter.com/intent/tweet?url=@Configuration["Address"]Products/@Model.ProductId" class="btn-share btn-share-twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=@Configuration["Address"]Products/@Model.ProductId" class="btn-share btn-share-facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a href="https://t.me/share/url?url=@Configuration["Address"]Products/@Model.ProductId" class="btn-share btn-share-google-plus" target="_blank"><i class="fa fa-telegram"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form class="form-share-url default">
+                                                <div class="form-share-url-title">آدرس صفحه</div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label class="ui-url">
+                                                            <input class="ui-url-field" value="@Configuration["Address"]Products/@Model.ProductId">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Core -->
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="product-title default">
+                                <h1>
+                                    @Model.ProductName
+                                    <span>@Model.ProductEngName</span>
+                                </h1>
+                            </div>
+                            <div class="product-directory default">
+                                <ul>
+                                    <li>
+                                        <span>برند</span> :
+                                        <span class="product-brand-title">@Model.Brand</span>
+                                    </li>
+                                    @if (ViewBag.SubGroupName != null)
+                                    {
+                                        <li>
+                                            <span>دسته‌بندی</span> :
+                                            <a href="/Products?groupId=@Model.SubGroupId" class="btn-link-border">
+                                                @ViewBag.SubGroupName
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="product-variants default">
+                                <span>انتخاب رنگ: </span>
+                                <form id="addToCart" asp-action="AddToCart" asp-controller="Cart" method="post">
+                                    <input type="hidden" name="productId" value="@Model.ProductId" />
+                                    @{
+                                        var colors = Model.Color.Split(",");
+                                        for (var i = 0; i < colors.Length; i++)
+                                        {
+                                            <div class="radio">
+                                                <input onchange="UpdateColor(this.value)" type="radio" name="color" id="radio @i" value="@colors[i]">
+                                                <label for="radio @i">
+                                                    @colors[i]
+                                                </label>
+                                            </div>
+                                        }
+                                    }
+                                </form>
+                            </div>
+                            <div class="product-guarantee default">
+                                <i class="fa fa-check-circle"></i>
+                                @if (Model.Warranty == null)
+                                {
+                                    <p class="product-guarantee-text">گارانتی اصالت و سلامت فیزیکی کالا</p>
+                                }
+                                else
+                                {
+                                    <p class="product-guarantee-text">@Model.Warranty</p>
+                                }
+                            </div>
+                            <div class="price-product defualt">
+                                @if (Model.IsOnSale)
+                                {
+                                    <div class="price-value">
+                                        <span> @Compute.ComputeSalePrice(Model.ProductPrice,Model.SalePercent).ToString("#,0") </span>
+                                        <span class="price-currency">تومان</span>
+                                    </div>
+                                    <div class="price-discount" data-title="تخفیف">
+                                        <span>
+                                            @Model.SalePercent
+                                        </span>
+                                        <span>%</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="price-value">
+                                        <span> @Model.ProductPrice.ToString("#,0") </span>
+                                        <span class="price-currency">تومان</span>
+                                    </div>
+                                }
+                            </div>
+                            <div class="product-add default">
+                                <div class="parent-btn">
+                                    <button class="dk-btn dk-btn-info" onclick="SubmitForm()">
+                                        افزودن به سبد خرید
+                                        <i class="now-ui-icons shopping_cart-simple"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 center-breakpoint">
+                            <div class="product-params default">
+                                <ul data-title="ویژگی‌های محصول">
+                                    @foreach (var feature in shortFeatures)
+                                    {
+                                        <li>
+                                            <span> @feature.FeatureTitle : </span>
+                                            <span> @feature.FeatureDescription </span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-12 default no-padding">
+                    <div class="product-tabs default">
+                        <div class="box-tabs default">
+                            <ul class="nav" role="tablist">
+                                <li class="box-tabs-tab">
+                                    <a class="active" data-toggle="tab" href="#desc" role="tab" aria-expanded="true">
+                                        <i class="now-ui-icons objects_umbrella-13"></i> نقد و بررسی
+                                    </a>
+                                </li>
+                                <li class="box-tabs-tab">
+                                    <a data-toggle="tab" href="#params" role="tab" aria-expanded="false">
+                                        <i class="now-ui-icons shopping_cart-simple"></i> مشخصات
+                                    </a>
+                                </li>
+                                <li class="box-tabs-tab">
+                                    <a data-toggle="tab" href="#comments" role="tab" aria-expanded="false">
+                                        <i class="now-ui-icons shopping_shop"></i> نظرات کاربران
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="card-body default">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="desc" role="tabpanel" aria-expanded="true">
+                                        <article>
+                                            <h2 class="param-title">
+                                                نقد و بررسی تخصصی
+                                                <span>@Model.ProductName</span>
+                                            </h2>
+                                            <div class="parent-expert default">
+                                                <div class="content-expert">
+                                                    <p>
+                                                        @Model.ShortDescription
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion default" id="accordionExample">
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                نمایش بیشتر
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+
+                                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <p>@Html.Raw(Model.FullDescription)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                    <div class="tab-pane params" id="params" role="tabpanel" aria-expanded="false">
+                                        <article>
+                                            <h2 class="param-title">
+                                                مشخصات فنی
+                                                <span>@Model.ProductEngName</span>
+                                            </h2>
+                                            @foreach (var feature in featrues.Where(f => f.ParentId == null))
+                                            {
+                                                <section>
+                                                    <h3 class="params-title">@feature.FeatureTitle</h3>
+                                                    <ul class="params-list">
+                                                        @if (featrues.Any(f => f.ParentId == feature.FeatureId))
+                                                        {
+                                                            @foreach (var subFeature in featrues.Where(f => f.ParentId == feature.FeatureId))
+                                                            {
+                                                                <li>
+                                                                    <div class="params-list-key">
+                                                                        <span class="block">@subFeature.FeatureTitle :</span>
+                                                                    </div>
+                                                                    <div class="params-list-value">
+                                                                        <span class="block">
+                                                                            @subFeature.FeatureDescription
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </section>
+                                            }
+
+                                        </article>
+                                    </div>
+                                    <div class="tab-pane" id="comments" role="tabpanel" aria-expanded="false">
+                                        <article>
+                                            <h2 class="param-title">
+                                                نظرات کاربران
+                                                <span>۱۲۳ نظر</span>
+                                            </h2>
+
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <article>
+                                                    <h2 class="param-title">
+                                                        افزودن نظر
+                                                        <span>نظر خود را در مورد محصول مطرح نمایید</span>
+                                                    </h2>
+                                                    <form asp-action="AddComment" asp-controller="Home" >
+                                                        <input type="hidden" name="comment.ProductId" value="@Model.ProductId" />
+                                                        <input type="hidden" name="comment.ParentId" id="parentId" />
+                                                        <textarea name="comment.CommentText" class="form-control" placeholder="متن نظر ..." rows="5" id="commentText"></textarea>
+                                                        <button type="submit" class="btn btn-default">ارسال نظر</button>
+                                                    </form>
+                                                </article>
+                                            }
+                                            else
+                                            {
+                                                <article>
+                                                    <h2 class="param-title">
+                                                        افزودن نظر
+                                                        <span>لطفا جهت درج نظر جدید ؛ به حساب کاربری خود وارد شوید !</span>
+                                                    </h2>
+                                                </article>
+                                            }
+
+                                            <div class="comments-area default" id="listComments">
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts
+{
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+    function changeImage(link) {
+        var parentImage = $("#img-product-zoom");
+        parentImage.fadeOut(500,
+            function() {
+                parentImage.attr("src", link);
+                parentImage.fadeIn(500);
+                parentImage.css("max-height", "411px");
+            });
+    }
+
+    function SubmitForm() {
+        var form = document.getElementById("addToCart");
+        form.submit();
+    }
+
+    window.addEventListener("load",
+        function setFirstColor() {
+            var color = document.getElementById("radio 0");
+            color.checked = true;
+        });
+
+    $(function() {
+        $("#listComments").load("/Products/ShowComments/" + @Model.ProductId);
+    });
+
+    function pageComment(pageId) {
+        $("#listComments").load("/Products/ShowComments/" + @Model.ProductId + "?pageId=" + pageId);
+    }
+
+</script>
+}

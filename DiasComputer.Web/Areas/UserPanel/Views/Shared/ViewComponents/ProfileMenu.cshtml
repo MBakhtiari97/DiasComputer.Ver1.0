@@ -1,0 +1,97 @@
+﻿@model DiasComputer.Core.DTOs.Account.UserForProfileMenuViewModel
+<div class="profile-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-1">
+    <div class="profile-box">
+        <div class="profile-box-header">
+            <div class="profile-box-avatar">
+                <img src="/images/userAvatars/@Model.UserProfile" alt="">
+            </div>
+            <!-- Modal Core -->
+        </div>
+        <div class="profile-box-username">@Model.UserName</div>
+        <div class="profile-box-tabs">
+            <a href="/MyProfile/ChangePassword" class="profile-box-tab profile-box-tab-access">
+                <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                تغییر رمز
+            </a>
+            <a href="/SignOut" class="profile-box-tab profile-box-tab--sign-out">
+                <i class="now-ui-icons media-1_button-power"></i>
+                خروج از حساب
+            </a>
+        </div>
+    </div>
+    <div class="responsive-profile-menu show-md">
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-navicon"></i>
+                حساب کاربری شما
+            </button>
+            <div class="dropdown-menu dropdown-menu-right text-right">
+                <a href="/MyProfile" class="dropdown-item">
+                    <i class="now-ui-icons users_single-02"></i>
+                    پروفایل
+                </a>
+                <a href="/MyProfile/Orders" class="dropdown-item">
+                    <i class="now-ui-icons shopping_basket"></i>
+                    همه سفارش ها
+                </a>
+                <a href="/MyProfile/Orders/Referred" class="dropdown-item">
+                    <i class="now-ui-icons files_single-copy-04"></i>
+                    لیست مرجوعی ها
+                </a>
+                <a href="/MyProfile/Wishlist" class="dropdown-item">
+                    <i class="now-ui-icons ui-2_favourite-28"></i>
+                    لیست علاقمندی ها
+                </a>
+                <a href="/MyProfile/PostDetails" class="dropdown-item">
+                    <i class="now-ui-icons business_badge"></i>
+                    اطلاعات پستی
+                </a>
+                <a href="/MyProfile/Wallet" class="dropdown-item">
+                    <i class="now-ui-icons fa-google-wallet"></i>
+                    کیف پول
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="profile-menu hidden-md">
+        <div class="profile-menu-header">حساب کاربری شما</div>
+        <ul class="profile-menu-items">
+            <li>
+                <a href="/MyProfile">
+                    <i class="now-ui-icons users_single-02"></i>
+                    پروفایل
+                </a>
+            </li>
+            <li>
+                <a href="/MyProfile/Orders">
+                    <i class="now-ui-icons shopping_basket"></i>
+                    همه سفارش ها
+                </a>
+            </li>
+            <li>
+                <a href="/MyProfile/Orders/Referred">
+                    <i class="now-ui-icons files_single-copy-04"></i>
+                    لیست مرجوعی ها
+                </a>
+            </li>
+            <li>
+                <a href="/MyProfile/Wishlist">
+                    <i class="now-ui-icons ui-2_favourite-28"></i>
+                    لیست علاقمندی ها
+                </a>
+            </li>
+            <li>
+                <a href="/MyProfile/PostDetails">
+                    <i class="now-ui-icons business_badge"></i>
+                    اطلاعات پستی
+                </a>
+            </li>
+            <li>
+                <a href="/MyProfile/Wallet">
+                    <i class="now-ui-icons business_money-coins"></i>
+                    کیف پول
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model DiasComputer.Core.DTOs.Account.UpdateProfileViewModel
+@{
+    ViewData["Title"] = "ویرایش اطلاعات کاربری";
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12">
+                            <h1 class="title-tab-content">ویرایش اطلاعات شخصی</h1>
+                        </div>
+                        <div class="content-section default">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1 class="title-tab-content">حساب شخصی</h1>
+                                </div>
+                            </div>
+                            <form class="form-account" asp-action="ChangeProfileDetails" method="post" enctype="multipart/form-data">
+                                <input type="hidden" asp-for="UserId"/>
+                                <input type="hidden" asp-for="CurrentProfile"/>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">نام و نام خانوادگی</div>
+                                        <div class="form-account-row">
+                                            <input class="input-field text-right" asp-for="UserName" type="text" placeholder="نام و نام خانوادگی خود را وارد نمایید">
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">کد ملی</div>
+                                        <div class="form-account-row">
+                                            <input class="input-field text-right" asp-for="NationalCode" type="text" placeholder="کد ملی خود را وارد نمایید">
+                                            <span asp-validation-for="NationalCode" class="text-danger"></span>
+                                            <i>در صورتی که تبعه می باشید می توانید به جای کد ملی از کد اتباع خود استفاده کنید !</i>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">شماره موبایل</div>
+                                        <div class="form-account-row">
+                                            <input class="input-field text-right" asp-for="PhoneNumber" type="text" placeholder="شماره موبایل خود را وارد نمایید">
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">آدرس ایمیل</div>
+                                        <div class="form-account-row">
+                                            <input class="input-field text-right" asp-for="EmailAddress" type="text" placeholder="آدرس ایمیل خود را وارد نمایید">
+                                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">شماره کارت</div>
+                                        <div class="form-account-row">
+                                            <input class="input-field text-right" asp-for="BankAccountNumber" type="text" placeholder=" شماره کارت خود را وارد نمایید">
+                                            <span asp-validation-for="BankAccountNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-account-title">تصویر آواتار</div>
+                                        <div class="form-account-row">
+                                            <input type="file" asp-for="UserAvatar"/>
+                                            <span asp-validation-for="UserAvatar" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-default btn-lg" type="submit">ذخیره</button>
+                                    <a href="/MyProfile" class="btn btn-default btn-lg">انصراف</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>

@@ -1,0 +1,54 @@
+﻿@model DiasComputer.Core.DTOs.Admin.BrandsViewModel
+@{
+    ViewData["Title"] = "ویرایش برند";
+}
+
+<div class="margin-pages">
+    <h1>ویرایش برند</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateBrand" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="LogoId" class="form-control" />
+                <input type="hidden" asp-for="LogoImg" class="form-control" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="LogoTitle" class="control-label"></label>
+                        <input asp-for="LogoTitle" class="form-control"/>
+                        <span asp-validation-for="LogoTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">لوگوی فعلی</label>
+                        <img class="img-thumbnail form-control admin-brands-img" src="/images/brand/@Model.LogoImg"/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">لوگوی جدید</label>
+                        <input type="file" asp-for="BrandImg" class="form-control"/>
+                        <span asp-validation-for="BrandImg" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsActive" class="control-label"></label><br/>
+                        <input asp-for="IsActive"/>
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="ویرایش برند" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="BrandsIndex">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

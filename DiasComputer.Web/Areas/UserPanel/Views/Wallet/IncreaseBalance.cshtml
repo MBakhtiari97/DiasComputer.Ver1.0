@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model DiasComputer.Core.DTOs.Orders.ChargeWalletViewModel
+@{
+    ViewData["Title"] = "افزایش موجودی کیف پول";
+}
+
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12">
+                            <h1 class="title-tab-content"> افزایش موجودی کیف پول </h1>
+                        </div>
+                        <div class="content-section default">
+                            <form method="post" asp-action="IncreaseBalance" class="profile-return-request-form">
+                                <p>تمایل دارید چه میزان کیف پول خود را شارژ نمایید ؟ (توجه نمایید مبلغ به تومان می باشد)</p>
+                                <div class="profile-return-request-form-row">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="profile-return-request-form-field">
+                                                <label class="ui-input">
+                                                    <input asp-for="Amount" class="input-field" id="priceAmount" onfocusout="ShowPrice(this.value)" type="number" placeholder="برای مثال 20000">
+                                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                                    <div class="col-md-3 col-12">
+                                                        <label id="showPrice"></label>
+                                                    </div>
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-12">
+                                            <button type="submit" class="btn btn-primary" id="btnSubmit" disabled>افزودن موجودی</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>
+
+
+@section Scripts
+{
+<script>
+    function ShowPrice(value) {
+        var lblPrice = document.getElementById("showPrice");
+        lblPrice.innerHTML = commafy(value) + "تومان";
+        lblPrice.style.color = "red";
+        var button = document.getElementById("btnSubmit");
+        button.disabled = false;
+    }
+
+    function commafy( num ) {
+        var str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
+    }
+</script>
+}

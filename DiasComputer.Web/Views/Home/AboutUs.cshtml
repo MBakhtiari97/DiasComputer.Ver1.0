@@ -1,0 +1,65 @@
+﻿@inject IConfiguration _configuration;
+@{
+    ViewData["Title"] = "AboutUs";
+}
+@section Metas
+{
+    <meta name="description" content="درباره دیاس کامپیوتر" />
+    <meta property="og:title" content="درباره ما" />
+    <meta property="og:description" content="درباره دیاس کامپیوتر" />
+    <meta property="og:url" content="@_configuration["Address"]aboutus/" />
+}
+
+<div class="accordion default text-center" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    نحوه خرید
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+            <div class="card-body">
+                <p>
+                    برای خرید از فروشگاه شما خریدان عزیز و محترم و دوستان همیشه فروشگاه دیاس می توانید جهت خرید محصولات از طریق سایت فروشگاه و یا از طریق مراجعه حضوری خرید خود را انجام دهید !
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    تاسیس دیاس کامپیوتر
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="">
+            <div class="card-body">
+                <p>
+                    فروشگاه دیاس کامپیوتر از سال 1391 در حال خدمتگزاری به خریداران محترم می باشد !
+                    تاکنون ده سال است که توانسته ایم در کنار شما عزیزان باشیم !
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    قیمت گذاری
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <p>
+                    ما تمام تلاشمان را کرده ایم که تاکنون تمام محصولات را با قیمت بسیار مناسب خدمت شما عزیزان ارائه کنیم !
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

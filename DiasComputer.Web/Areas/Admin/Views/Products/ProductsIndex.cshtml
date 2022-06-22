@@ -1,0 +1,184 @@
+﻿@using DiasComputer.Utility.Convertors
+@model Tuple<List<DiasComputer.Core.DTOs.Product.ProductsForAdminViewModel>,int>
+@{
+    ViewData["Title"] = "لیست محصولات";
+}
+
+<div class="margin-pages">
+    <h1>لیست محصولات</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">محصول جدید</a>
+        <p>
+        <form method="get" asp-action="Index">
+            <label>فیلتر کردن :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <input name="filter" type="text" class="form-control" placeholder="نام محصول" value="@((ViewBag.Filter!=null)?ViewBag.Filter:"")" />
+                    </div>
+                    <div class="col col-md-2">
+                        <select name="isAvailable" class="form-control">
+                            <option value="">همه</option>
+                            <option value="true">فقط محصولات موجود</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <select name="isActive" class="form-control">
+                            <option value="">همه</option>
+                            <option value="true">فقط محصولات فعال</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <select name="isOnSale" class="form-control">
+                            <option value="">همه</option>
+                            <option value="true">فقط محصولات تخفیف دار</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary" />
+                        <a href="/Admin/ManageEmail/SentEmailsHistory" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().AddedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ProductColors)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().AvailableStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().AvailableCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().IsOnSale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().SalePercent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().IsActive)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        <span>@item.AddedDate.ToShamsi()</span>
+                    </td>
+                    <td>
+                        <p>@item.ProductPrice.ToString("#,0")</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductColors)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AvailableStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AvailableCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsOnSale)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalePercent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="Edit" asp-controller="Products" asp-route-productId="@item.ProductId">ویرایش</a>
+                        <a class="btn btn-sm btn-outline-success" asp-action="Details" asp-controller="Products" asp-route-productId="@item.ProductId">جزئیات</a>
+                        <br />
+                        <a class="btn btn-sm btn-outline-danger" asp-action="FeaturesIndex" asp-controller="Feature" asp-route-productId="@item.ProductId">ویژگی ها</a>
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.ProductId)">حذف</a>
+                        <br />
+                        <a class="btn btn-sm btn-outline-secondary" asp-action="GalleryIndex" asp-controller="Gallery" asp-route-productId="@item.ProductId">گالری تصاویر</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف محصول</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این محصول اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="Delete" method="get">
+                        <input id="productId" type="hidden" name="productId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="Index" asp-controller="Products" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+    function SendID(productId) {
+        var productIdValue = document.getElementById("productId");
+        productIdValue.value = productId;
+    }
+</script>
+
+<!--EndPaging-->

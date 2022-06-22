@@ -1,0 +1,49 @@
+﻿@model DiasComputer.Core.DTOs.Admin.BrandsViewModel
+@{
+    ViewData["Title"] = "افزودن برند جدید";
+}
+
+
+<div class="margin-pages">
+    <h1>افزودن برند جدید</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="CreateBrand" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="LogoTitle" class="control-label"></label>
+                        <input asp-for="LogoTitle" class="form-control" />
+                        <span asp-validation-for="LogoTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="BrandImg" class="control-label"></label>
+                        <input type="file" asp-for="BrandImg" class="form-control" />
+                        <span asp-validation-for="BrandImg" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsActive" class="control-label"></label><br/>
+                        <input asp-for="IsActive" />
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="افزودن برند" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="BrandsIndex">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

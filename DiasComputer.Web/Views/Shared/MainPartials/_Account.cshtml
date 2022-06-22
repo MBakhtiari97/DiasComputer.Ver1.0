@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims
+@using DiasComputer.Core.Services.Interfaces
+@inject IUserRepository _UserRepository;
+
+@{
+    bool isAdmin = false;
+    if (User.Identity.IsAuthenticated)
+    {
+        isAdmin = _UserRepository.IsUserAdmin(int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier.ToString())));
+    }
+}
+
+<div class="user-login dropdown">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a href=# class="btn btn-neutral dropdown-toggle" data-toggle="dropdown"
+       id="navbarDropdownMenuLink1">
+            ورود / ثبت نام
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+            <div class="dropdown-item">
+                <a class="btn btn-info" href="/SignIn">ورود به دیاس کامپیوتر</a>
+            </div>
+            <div class="dropdown-item font-weight-bold">
+                <span>کاربر جدید هستید؟</span> <a class="register" href="/SignUp">ثبت‌نام</a>
+            </div>
+        </ul>
+    }
+    else
+    {
+        <a href=# class="btn btn-neutral dropdown-toggle" data-toggle="dropdown"
+       id="navbarDropdownMenuLink1">
+            @User.Identity.Name خوش آمدید !
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+            <div class="dropdown-item">
+                <a class="btn btn-info" href="/MyProfile">حساب کاربری من</a>
+            </div>
+            @if (isAdmin == true)
+            {
+                <div class="dropdown-item">
+                    <a class="btn btn-info" href="/Admin/Home">پنل ادمین</a>
+                </div>
+            }
+            <div class="dropdown-item font-weight-bold">
+                <a class="register" href="/MyProfile/Wishlist">لیست مورد علاقه های من</a>
+            </div>
+            <div class="dropdown-item font-weight-bold">
+                <a class="register" href="/MyProfile/Wallet">کیف پول من</a>
+            </div>
+            <div class="dropdown-item font-weight-bold">
+                <a class="register" href="/SignOut">خروج از حساب کاربری</a>
+            </div>
+        </ul>
+    }
+</div>

@@ -1,0 +1,75 @@
+﻿@model List<DiasComputer.DataLayer.Entities.Users.Role>
+@{
+    ViewData["Title"] = "لیست نفش ها";
+}
+<div class="margin-pages">
+    <h1>لیست نقش ها</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="CreateRole">نقش جدید</a>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().RoleId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().RoleName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateRole" asp-route-roleId="@item.RoleId">ویرایش</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.RoleId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف نقش</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این نقش اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteRole" method="get">
+                        <input id="roleId" type="hidden" name="roleId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+
+
+
+<script>
+    function SendID(roleId) {
+           var roleIdValue = document.getElementById("roleId");
+           roleIdValue.value = roleId;
+       }
+</script>
+

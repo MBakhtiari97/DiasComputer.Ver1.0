@@ -1,0 +1,42 @@
+﻿@using DiasComputer.Utility.Compute
+@model List<DiasComputer.Core.DTOs.Product.LatestProductsSliderViewModel>
+<div class="widget widget-product card">
+    <header class="card-header">
+        <h3 class="card-title">
+            <span>@ViewBag.GroupTitle</span>
+        </h3>
+        <a href="/Products?groupId=@ViewBag.GroupId" class="view-all">مشاهده همه</a>
+    </header>
+    <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1891px;">
+                @foreach (var product in Model)
+                {
+                    <div class="owl-item active" style="width: 260.063px; margin-left: 10px;">
+                        <div class="item">
+                            <a href="/Products/@product.ProductId">
+                                <img src="/images/productThumbnailImages/@product.ProductImage" class="img-fluid" alt="@product.ProductTitle">
+                            </a>
+                            <h2 class="post-title">
+                                <b><a href="/Products/@product.ProductId" style="font-size: 15px;">@product.ProductTitle</a></b>
+                            </h2>
+                            @if (product.IsOnSale)
+                            {
+                                <div class="price">
+                                    <del><span>@product.ProductPrice.ToString("#,0")<span>تومان</span></span></del>
+                                    <ins><b><span>@Compute.ComputeSalePrice(product.ProductPrice,product.ProductSalePercent).ToString("#,0")<span>تومان</span></span></b></ins>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="price">
+                                    <b><span>@product.ProductPrice.ToString("#,0")<span>تومان</span></span></b>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="now-ui-icons arrows-1_minimal-right"></i></button><button type="button" role="presentation" class="owl-next"><i class="now-ui-icons arrows-1_minimal-left"></i></button></div><div class="owl-dots disabled"></div>
+    </div>
+</div>

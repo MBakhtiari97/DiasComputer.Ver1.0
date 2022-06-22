@@ -1,0 +1,46 @@
+﻿@model DiasComputer.DataLayer.Entities.Users.Wallet
+@{
+    ViewData["Title"] = "وضعیت کیف پول";
+}
+@if (Model == null)
+{
+    <div class="margin-pages col-12 text-center">
+        <h3>کیف پول این کاربر غیر فعال است</h3>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+else
+{
+    <div class="margin-pages col-12">
+        <h1>کیف پول</h1>
+        <table class="table table-responsive-lg col-12">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <p>@Model.Balance.ToString("#,0")  تومان</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.IsActive)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-success" asp-action="ChangeWalletStatus" asp-controller="User" asp-route-walletId="@Model.WalletId">تغییر وضعیت</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+

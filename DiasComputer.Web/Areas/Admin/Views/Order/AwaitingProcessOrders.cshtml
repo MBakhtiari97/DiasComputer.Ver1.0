@@ -1,0 +1,65 @@
+﻿@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.Core.DTOs.Orders.OrdersWaitingForActionViewModel>
+@{
+    ViewData["Title"] = "سفارشات در انتظار پیگیری";
+}
+
+
+
+<div class="margin-pages">
+    <h1>سفارشات در انتظار پیگیری</h1>
+    
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().OrderSum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().IsFinally)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-secondary">
+                        <p><b>DC-@item.OrderId</b></p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td class="text-danger">
+                        <p><b>@item.OrderSum.ToString("#,0") تومان</b></p>
+                    </td>
+                    <td>
+                        <p>@item.OrderDate.ToShamsi()</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsFinally)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="ProcessOrder" asp-route-orderId="@item.OrderId" asp-route-userId="@item.UserId">پردازش</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

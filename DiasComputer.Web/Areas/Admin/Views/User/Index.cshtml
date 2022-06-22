@@ -1,0 +1,180 @@
+﻿@using DiasComputer.Utility.Convertors
+@model Tuple<List<DiasComputer.Core.DTOs.Admin.UserViewModel.ManageUsersViewModel>,int>
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<div class="margin-pages">
+    <h1>لیست کاربران</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">کاربر جدید</a>
+    <p>
+        <form method="get" asp-action="Index">
+            <label>فیلتر کردن :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+
+                    <div class="col col-md-2">
+                        <input name="emailAddress" type="text" class="form-control" placeholder="آدرس ایمیل" value="@((ViewBag.EmailAddress != null) ? ViewBag.EmailAddress : "")"/>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <input name="bankAccountNumber" type="text" class="form-control" placeholder="شماره حساب" value="@((ViewBag.BankAccountNumber != null) ? ViewBag.BankAccountNumber : "")"/>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <input name="nationalCode" type="text" class="form-control" placeholder="کد ملی" value="@((ViewBag.NationalCode != null) ? ViewBag.NationalCode : "")"/>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <input name="phoneNumber" type="text" class="form-control" placeholder="شماره تماس" value="@((ViewBag.PhoneNumber != null) ? ViewBag.PhoneNumber : "")"/>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <input name="userName" type="text" class="form-control" placeholder="نام و نام خانوادگی" value="@((ViewBag.UserName != null) ? ViewBag.UserName : "")"/>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary"/>
+                        <a href="/Admin/User/Index" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </p>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().EmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().UserAvatar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().NationalCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().RegisterDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().BankAccountNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().IsActive)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        <img src="/images/userAvatars/@item.UserAvatar" alt="تصویر کاربر" class="img-thumbnail admin-profile-avatar" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NationalCode)
+                    </td>
+                    <td>
+                        <span>@item.RegisterDate.ToShamsi()</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankAccountNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="Edit" asp-route-id="@item.UserId">ویرایش</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-success" asp-action="DeliveryDetails" asp-route-userId="@item.UserId">جزئیات پستی</a>
+                        <br />
+                        <a class="btn btn-sm btn-outline-success" asp-action="UserOrders" asp-route-userId="@item.UserId">سفارشات</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-success" asp-action="UserTransactions" asp-route-userId="@item.UserId">تراکنش ها</a>
+                        <br />
+                        <a class="btn btn-sm btn-outline-success" asp-action="WalletStatus" asp-route-userId="@item.UserId">کیف پول</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.UserId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف کاربر</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این کاربر اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="Delete" method="get">
+                        <input id="userId" type="hidden" name="id" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="Index" asp-controller="User" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+    function SendID(userId) {
+        var userIdValue = document.getElementById("userId");
+        userIdValue.value = userId;
+    }
+</script>
+
+<!--EndPaging-->

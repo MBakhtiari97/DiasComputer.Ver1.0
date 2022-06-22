@@ -1,0 +1,80 @@
+﻿@model List<DiasComputer.Core.DTOs.Admin.SliderViewModel>
+@{
+    ViewData["Title"] = "اسلاید ها";
+}
+
+<div class="margin-pages">
+    <h1>لیست بنر های اسلایدر</h1>
+    <a class="btn btn-sm btn-outline-success" asp-action="AddNewSlide">افزودن اسلاید جدید</a>
+    <br/>
+    <br/>
+    <table class="table table-responsive-lg col-12 table-striped text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().SlideAltName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().SlideRedirectTo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().SlideImg)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.SlideAltName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.SlideRedirectTo)
+                    </td>
+                    <td>
+                        <img src="/images/slider/@item.SlideImg" class="img-thumbnail" />
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateSlide" asp-route-slideId="@item.SlideId">بروزرسانی اسلاید</a>
+                        <a class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.SlideId)">حذف اسلاید</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف اسلاید</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این اسلاید اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteSlide" method="get">
+                        <input id="slideId" type="hidden" name="slideId" />
+                        <button type="submit" class="btn btn-danger">تایید</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+<script>
+
+    function SendID(slideId) {
+        var slideIdValue = document.getElementById("slideId");
+        slideIdValue.value = slideId;
+    }
+</script>

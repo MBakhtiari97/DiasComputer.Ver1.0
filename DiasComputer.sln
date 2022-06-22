@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiasComputer.Web", "DiasComputer.Web\DiasComputer.Web.csproj", "{C8945940-9476-4430-9CA4-A0326E6B9537}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiasComputer.DataLayer", "DiasComputer.DataLayer\DiasComputer.DataLayer.csproj", "{31CD65D9-AD08-4EFF-8DB2-863034F8C928}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiasComputer.Core", "DiasComputer.Core\DiasComputer.Core.csproj", "{8907D9C1-3CE2-44BF-BE1B-306FC5513B5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiasComputer.Utility", "DiasComputer.Utility\DiasComputer.Utility.csproj", "{E8600F8E-54A1-4192-B14E-50EC3581C65C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{613DADB7-781E-415C-9431-532606534F42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiasComputer.Test.Utility", "DiasComputer.Test.Utility\DiasComputer.Test.Utility.csproj", "{FFC61024-6253-4336-9E30-D3CD983CCAFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8945940-9476-4430-9CA4-A0326E6B9537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8945940-9476-4430-9CA4-A0326E6B9537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8945940-9476-4430-9CA4-A0326E6B9537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8945940-9476-4430-9CA4-A0326E6B9537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CD65D9-AD08-4EFF-8DB2-863034F8C928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CD65D9-AD08-4EFF-8DB2-863034F8C928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CD65D9-AD08-4EFF-8DB2-863034F8C928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CD65D9-AD08-4EFF-8DB2-863034F8C928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8907D9C1-3CE2-44BF-BE1B-306FC5513B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8907D9C1-3CE2-44BF-BE1B-306FC5513B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8907D9C1-3CE2-44BF-BE1B-306FC5513B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8907D9C1-3CE2-44BF-BE1B-306FC5513B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8600F8E-54A1-4192-B14E-50EC3581C65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8600F8E-54A1-4192-B14E-50EC3581C65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8600F8E-54A1-4192-B14E-50EC3581C65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8600F8E-54A1-4192-B14E-50EC3581C65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC61024-6253-4336-9E30-D3CD983CCAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC61024-6253-4336-9E30-D3CD983CCAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC61024-6253-4336-9E30-D3CD983CCAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC61024-6253-4336-9E30-D3CD983CCAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FFC61024-6253-4336-9E30-D3CD983CCAFE} = {613DADB7-781E-415C-9431-532606534F42}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {894E4CB4-32AD-40E5-ACCC-E62569539D26}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,48 @@
+﻿@using DiasComputer.Utility.Compute
+@using System.Security.Claims
+@model DiasComputer.Core.DTOs.Product.SingleProductInListViewModel
+
+
+<li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+    @if (Model.AvailableStatus == true)
+    {
+        <div class="label-available">موجود</div>
+    }
+    else
+    {
+        <div class="label-check">موجود نیست</div>
+    }
+    <div class="product-box">
+        <a class="product-box-img" href="/Products/@Model.ProductId">
+            <img src="/images/productImages/@Model.ProductImage" alt="@Model.ProductName">
+        </a>
+        <div class="product-box-content">
+            <div class="product-box-content-row">
+                <div class="product-box-title">
+                    <a href="/Products/@Model.ProductId">
+                        @Model.ProductName
+                    </a>
+                </div>
+            </div>
+            <div class="newPrice">
+                @if (Model.AvailableStatus == true)
+                {
+                    @if (Model.IsOnSale)
+                    {
+                        <p style="text-decoration: line-through;"><b>@Model.ProductPrice.ToString("#,0")</b> تومان</p><span class="badge-primary" style="color: whitesmoke; border-radius: 5px; padding: 5px;">%@Model.SalePercent تخفیف</span>
+                        <p style="margin-top: 15px; "><b>@Compute.ComputeSalePrice(Model.ProductPrice, Model.SalePercent).ToString("#,0")</b> تومان</p>
+                    }
+                    else
+                    {
+                        <p><b>@Model.ProductPrice.ToString("#,0")</b> تومان</p>
+                    }
+                }
+                else
+                {
+                    <p class="text-secondary">ناموجود</p>
+                }
+                <a href="/Products/@Model.ProductId" class="btn btn-primary">مشاهده محصول</a>
+            </div>
+        </div>
+    </div>
+</li>

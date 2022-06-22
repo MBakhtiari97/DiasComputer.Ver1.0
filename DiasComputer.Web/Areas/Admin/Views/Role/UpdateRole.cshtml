@@ -1,0 +1,76 @@
+﻿@using DiasComputer.DataLayer.Entities.Permissions
+@model DiasComputer.DataLayer.Entities.Users.Role
+@{
+    ViewData["Title"] = "ویرایش نقش";
+    List<Permission> permissions = ViewBag.Permissions;
+    List<int> selectedPermissions = ViewBag.SelectedPermissions;
+}
+
+<div class="margin-pages">
+    <h1>ویرایش نقش </h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateRole" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="RoleId" class="form-control" type="hidden" />
+
+                <div class="form-group col-md-6">
+                    <label asp-for="RoleName" class="control-label"></label>
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">دسترسی های این نقش را انتخاب کنید</label>
+                    <ul style="list-style: none">
+                        @foreach (var item in permissions.Where(p => p.ParentId == null))
+                        {
+                            <li>
+                                <input type="checkbox" name="selectedPermission" value="@item.PermissionId" @((selectedPermissions.Any(p=>p == item.PermissionId))?"checked":"") /><span>&nbsp; @item.PermissionTitle</span>
+                                @if (permissions.Any(p => p.ParentId == item.PermissionId))
+                                {
+                                    <ul style="list-style: none">
+                                        <li>
+                                            @foreach (var subItem in permissions.Where(p => p.ParentId == item.PermissionId))
+                                            {
+                                                <input type="checkbox" name="selectedPermission" value="@subItem.PermissionId" @((selectedPermissions.Any(p=>p == subItem.PermissionId))?"checked":"") />
+
+                                                <span> &nbsp; @subItem.PermissionTitle</span>
+                                                @if (permissions.Any(p => p.ParentId == subItem.PermissionId))
+                                                {
+                                                    <ul style="list-style: none">
+                                                        @foreach (var grandSubItem in permissions.Where(p => p.ParentId == subItem.PermissionId))
+                                                        {
+                                                            <li>
+                                                                <input type="checkbox" name="selectedPermission" value="@grandSubItem.PermissionId" @((selectedPermissions.Any(p=>p == grandSubItem.PermissionId))?"checked":"")/><span>&nbsp; @grandSubItem.PermissionTitle</span>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            }
+                                        </li>
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ویرایش نقش" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="Index">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,74 @@
+﻿@using DiasComputer.Utility.Convertors
+@model DiasComputer.Core.DTOs.Product.ProductsForAdminViewModel
+@{
+    ViewData["Title"] = "جزئیات محصول";
+}
+
+<div class="margin-pages">
+    <h1>لیست محصولات</h1>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductImg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductColors)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubGroupId)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ProductName)
+                </td>
+                <td>
+                    <span><img src="/images/productThumbnailImages/@Model.ProductImg" class="img-thumbnail" /></span>
+                </td>
+                <td>
+                    <p>@Model.AddedDate.ToShamsi()</p>
+                </td>
+                <td>
+                    <p>@Model.ProductPrice.ToString("#,0") تومان</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ProductColors)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>Model.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.GroupId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.SubGroupId)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-sm btn-outline-success" asp-action="Index" asp-controller="Products">بازگشت</a>
+</div>

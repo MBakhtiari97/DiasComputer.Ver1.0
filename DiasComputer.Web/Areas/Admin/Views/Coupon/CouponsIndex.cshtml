@@ -1,0 +1,178 @@
+﻿@using DiasComputer.Utility.Convertors
+@model Tuple<List<DiasComputer.Core.DTOs.Admin.CouponsViewModel> , int>
+@{
+    ViewData["Title"] = "لیست کد های تخفیف";
+}
+
+<div class="margin-pages">
+    <h1>لیست کد های تخفیف</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="CreateCoupon">کد تخفیف جدید</a>
+    <p>
+        <form method="get" asp-action="CouponsIndex">
+            <label>فیلتر بر اساس کد تخفیف و یا تاریخ :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <input name="filter" type="text" class="form-control" placeholder="کد تخفیف را وارد کنید" value="@((ViewBag.Filter!=null)?ViewBag.Filter:"")" />
+                    </div>
+                    <div class="col col-md-3">
+                        <input name="startDate" id="startDateFilter" type="text" class="form-control" placeholder="اعتبار از" value="@((ViewBag.StartDate!=null)?ViewBag.Filter:"")" />
+                    </div>
+                    <div class="col col-md-3">
+                        <input name="endDate" id="endDateFilter" type="text" class="form-control" placeholder="اعتبار تا" value="@((ViewBag.EndDate!=null)?ViewBag.Filter:"")" />
+                    </div>
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary" />
+                        <a href="/Admin/Coupon/CouponsIndex" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().CouponId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().CouponCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().CouponPercent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().CouponCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ActiveFrom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ActiveTill)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CouponId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CouponCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CouponPercent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CouponCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @if(@item.ActiveFrom!=null)
+                        {
+                        <p>@item.ActiveFrom.Value.ToShamsi()</p>
+                        }
+                        else
+                        {
+                        <p>بدون تاریخ آغاز</p>
+                        }
+
+                    </td>
+                    <td>
+                        @if(@item.ActiveTill!=null)
+                        {
+                        <p>@item.ActiveTill.Value.ToShamsi()</p>
+                        }
+                        else
+                        {
+                        <p>بدون تاریخ پایان</p>
+                        }
+
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateCoupon" asp-route-couponId="@item.CouponId">ویرایش</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.CouponId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف کد تخفیف</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این کد تخفیف اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteCoupon" method="get">
+                        <input id="couponId" type="hidden" name="couponId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="CouponsIndex" asp-controller="Coupon" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+    function SendID(couponId) {
+        var couponIdValue = document.getElementById("couponId");
+        couponIdValue.value = couponId;
+    }
+</script>
+
+<link rel="stylesheet" href="/admin-resources/plugins/DatePicker/css/persianDatepicker-default.css" />
+<script src="/admin-resources/plugins/DatePicker/js/jquery-1.10.1.min.js"></script>
+<script src="/admin-resources/plugins/DatePicker/js/persianDatepicker.min.js"></script>
+<script>
+    $("#startDateFilter,#endDateFilter").persianDatepicker();
+</script>
+
+<!--EndPaging-->

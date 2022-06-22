@@ -1,0 +1,122 @@
+﻿
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <partial name="MainPartials/_Metas" />
+    @await RenderSectionAsync("Metas",false)
+    <partial name="MainPartials/_Styles" />
+</head>
+
+<body class="index-page sidebar-collapse">
+
+    <!-- responsive-header -->
+    <nav class="navbar direction-ltr fixed-top header-responsive">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="#pablo">
+                    <img src="/main-resources/assets/img/logo.png" height="24px" alt="">
+                </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+                <div class="search-nav default">
+                    <partial name="MainPartials/_SearchResponsive" />
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                <div class="logo-nav-res default text-center">
+                    <a href=#>
+                        <img src="/main-resources/assets/img/logo.png" height="36px" alt="">
+                    </a>
+                </div>
+                <cache expires-after="TimeSpan.FromHours(8)">
+                    @await Component.InvokeAsync("ResponsiveMenuItems")
+                </cache>
+
+            </div>
+        </div>
+    </nav>
+    <!-- responsive-header -->
+
+    <div class="wrapper default">
+
+        <!-- header -->
+        <header class="main-header default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-5">
+                        <div class="logo-area default">
+                            <a href="/">
+                                <img src="/main-resources/assets/img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-sm-8 col-7">
+                        <partial name="MainPartials/_Search" />
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <partial name="MainPartials/_Account" />
+                        <div class="cart dropdown">
+                            <a href=# class="btn dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink1">
+                                <i class="now-ui-icons shopping_cart-simple"></i>
+                                سبد خرید
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                    @await Component.InvokeAsync("Basket")
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink1">
+                                    <p style="margin-top: 20px;">جهت مشاهده سبد خرید وارد حساب کاربری خود شوید !</p>
+                                    <a href="/SignIn" class="btn btn-success">ورود به حساب کاربری</a>
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu">
+                <div class="container">
+                    <cache expires-after="TimeSpan.FromHours(8)">
+                        @await Component.InvokeAsync("MenuItems")
+                    </cache>
+
+                </div>
+            </nav>
+        </header>
+        <!-- header -->
+
+
+        <main class="main default">
+            @RenderBody()
+        </main>
+
+
+        <footer class="main-footer default">
+            <div class="back-to-top">
+                <a href=#>
+                    <span class="icon"><i class="now-ui-icons arrows-1_minimal-up"></i></span> <span>
+                        بازگشت به
+                        بالا
+                    </span>
+                </a>
+            </div>
+            <partial name="MainPartials/_Footer" />
+        </footer>
+    </div>
+</body>
+<partial name="MainPartials/_Scripts" />
+
+@await Component.InvokeAsync("Notyf")
+@await RenderSectionAsync("Scripts",false)
+
+</html>

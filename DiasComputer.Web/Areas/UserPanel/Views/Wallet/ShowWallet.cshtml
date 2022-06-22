@@ -1,0 +1,147 @@
+﻿@using DiasComputer.Core.DTOs.Orders
+@using DiasComputer.Utility.Convertors
+@model DiasComputer.DataLayer.Entities.Users.Wallet
+@{
+    ViewData["Title"] = "کیف پول من";
+    List<WalletTransactionsViewModel> transactions = ViewBag.WalletTransactions;
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                @if (Model == null)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="title-tab-content">کیف پول</h1>
+                        </div>
+                        <div class="col-12 text-center">
+                            <div class="content-section pt-5 pb-5">
+                                <div class="icon-empty">
+                                    <i class="now-ui-icons travel_info"></i>
+                                </div>
+                                <h1 class="text-empty">موردی برای نمایش وجود ندارد!</h1>
+                                <div class="col-12 text-center">
+                                    <a href="/Wallet/Create" class="btn-link-border form-account-link">
+                                        ایجاد کیف پول
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-12">
+                                <h1 class="title-tab-content">کیف پول</h1>
+                            </div>
+                            <div class="content-section default">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>
+                                            <span class="title">وضعیت کیف پول</span>
+                                            <span>
+                                                @if (Model.IsActive)
+                                                {
+                                                    <p class="text-success">فعال</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="text-danger">غیر فعال</p>
+                                                }
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>
+                                            <span class="title">موجودی کیف پول</span>
+                                            <span>@Model.Balance.ToString("#,0") تومان</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        @if (Model.IsActive)
+                                        {
+                                            <a href="/Wallet/UpBalance" class="btn-link-border form-account-link">
+                                                افزایش موجودی
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Wallet/Activate" class="btn-link-border form-account-link">
+                                                فعالسازی کیف پول
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (transactions.Any())
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-12">
+                                <h1 class="title-tab-content">تراکنش های اخیر کیف پول</h1>
+                            </div>
+                            <div class="content-section default">
+                                <div class="row text-center">
+                                    <table class="table table-bordered table-striped table-responsive-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>نوع تراکنش</th>
+                                                <th>مبلغ کل</th>
+                                                <th>تاریخ انجام تراکنش</th>
+                                                <th>توضیحات</th>
+                                                <th>روش پرداخت</th>
+                                                <th>تایید شده</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in transactions)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @if (item.TypeId == 1)
+                                                        {
+                                                            <p class="text-success">واریز</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-danger">برداشت</p>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <p class="text-primary"><b>@item.Amount.ToString("#,0") تومان</b></p>
+                                                    </td>
+                                                    <td>@item.Date.ToShamsi()</td>
+                                                    <td>@item.Description</td>
+                                                    <td>@item.PaymentMethod</td>
+                                                    <td>
+                                                        @if (item.IsApproved)
+                                                        {
+                                                            <p class="text-success">تایید شده</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-danger">تایید نشده</p>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>
+

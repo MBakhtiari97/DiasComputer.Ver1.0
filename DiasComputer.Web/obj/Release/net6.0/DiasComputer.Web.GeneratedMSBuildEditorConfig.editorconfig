@@ -1,0 +1,539 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.PublishSingleFile = 
+build_property.IncludeAllContentForSelfExtract = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.RootNamespace = DiasComputer.Web
+build_property.RootNamespace = DiasComputer.Web
+build_property.ProjectDir = G:\DiasComputer\DiasComputer\DiasComputer.Web\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = G:\DiasComputer\DiasComputer\DiasComputer.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Banner/BannersIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFubmVyXEJhbm5lcnNJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Banner/UpdateBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFubmVyXFVwZGF0ZUJhbm5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Category/AddCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQWRkQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Category/UpdateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcVXBkYXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ContactUs/AddNewDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29udGFjdFVzXEFkZE5ld0RldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ContactUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29udGFjdFVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ContactUs/UpdateDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29udGFjdFVzXFVwZGF0ZURldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Coupon/CouponsIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uXENvdXBvbnNJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Coupon/CreateCoupon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uXENyZWF0ZUNvdXBvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Coupon/UpdateCoupon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uXFVwZGF0ZUNvdXBvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Feature/AddFeatures.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxBZGRGZWF0dXJlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Feature/FeaturesIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxGZWF0dXJlc0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Feature/UpdateFeature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmVhdHVyZVxVcGRhdGVGZWF0dXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Gallery/AddNewGalleryImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxBZGROZXdHYWxsZXJ5SW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Gallery/GalleryIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxHYWxsZXJ5SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Gallery/UpdateGalleryImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxVcGRhdGVHYWxsZXJ5SW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Home/BrandsIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxCcmFuZHNJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Home/CreateBrand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxDcmVhdGVCcmFuZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Home/UpdateBrand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxVcGRhdGVCcmFuZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ManageEmail/EmailDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1haWxcRW1haWxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ManageEmail/SendAdminsEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1haWxcU2VuZEFkbWluc0VtYWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ManageEmail/SendPrivateEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1haWxcU2VuZFByaXZhdGVFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ManageEmail/SendPublicEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1haWxcU2VuZFB1YmxpY0VtYWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/ManageEmail/SentEmailsHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlRW1haWxcU2VudEVtYWlsc0hpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Order/AllOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcQWxsT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Order/AwaitingProcessOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcQXdhaXRpbmdQcm9jZXNzT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Order/OrdersHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcT3JkZXJzSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Order/PrintInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcUHJpbnRJbnZvaWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Order/ProcessOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcUHJvY2Vzc09yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Products/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Products/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Products/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Products/ProductsIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcUHJvZHVjdHNJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Review/AwaitingReviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3XEF3YWl0aW5nUmV2aWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Review/ReplyComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3XFJlcGx5Q29tbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Review/ReportedComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3XFJlcG9ydGVkQ29tbWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Role/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxDcmVhdGVSb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Role/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Role/UpdateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxVcGRhdGVSb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Shared/Partials/_Scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9TY3JpcHRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Shared/Partials/_SidebarMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9TaWRlYmFyTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Shared/Partials/_Styles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9TdHlsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Slider/AddNewSlide.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEFkZE5ld1NsaWRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Slider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Slider/UpdateSlide.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXFVwZGF0ZVNsaWRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Ticket/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGlja2V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/Ticket/UpdateTicketStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGlja2V0XFVwZGF0ZVRpY2tldFN0YXR1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/DeliveryDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZWxpdmVyeURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/OrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxPcmRlckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/OrderTransactionDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxPcmRlclRyYW5zYWN0aW9uRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/UserOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxVc2VyT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/UserTransactions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxVc2VyVHJhbnNhY3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/User/WalletStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxXYWxsZXRTdGF0dXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Order/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXE9yZGVyXE15T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Order/MyReferredOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXE9yZGVyXE15UmVmZXJyZWRPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Order/ShowOrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXE9yZGVyXFNob3dPcmRlckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Shared/ViewComponents/ProfileMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFNoYXJlZFxWaWV3Q29tcG9uZW50c1xQcm9maWxlTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/ChangeProfileDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcQ2hhbmdlUHJvZmlsZURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/InsertPostDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcSW5zZXJ0UG9zdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/MyPostDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcTXlQb3N0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcTXlQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/MyWishList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcTXlXaXNoTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/User/UpdatePostDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFVzZXJcVXBkYXRlUG9zdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Wallet/IncreaseBalance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFdhbGxldFxJbmNyZWFzZUJhbGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Wallet/OnlinePayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFdhbGxldFxPbmxpbmVQYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/Wallet/ShowWallet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFdhbGxldFxTaG93V2FsbGV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Areas/UserPanel/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/Emails/_ActivationEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFbWFpbHNcX0FjdGl2YXRpb25FbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/Emails/_ForgotPasswordEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFbWFpbHNcX0ZvcmdvdFBhc3N3b3JkRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/Emails/_PrivateEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFbWFpbHNcX1ByaXZhdGVFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/Emails/_PublicEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFbWFpbHNcX1B1YmxpY0VtYWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/RecoverPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWNvdmVyUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/SetNewPasswordInRecoverMode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZXROZXdQYXNzd29yZEluUmVjb3Zlck1vZGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Account/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Cart/CheckOutDetailsForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja091dERldGFpbHNGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Cart/OnlineProductPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPbmxpbmVQcm9kdWN0UGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Cart/ShowCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxTaG93Q2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Cart/ShowCheckoutDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxTaG93Q2hlY2tvdXREZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/ContactUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/PageNotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlTm90Rm91bmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/PageServerError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdlU2VydmVyRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Home/Refer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWZlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Products/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Products/SearchProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcU2VhcmNoUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Products/ShowComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcU2hvd0NvbW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Products/ShowProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcU2hvd1Byb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/IndexPartials/_LatestComputer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEluZGV4UGFydGlhbHNcX0xhdGVzdENvbXB1dGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfRm9vdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Metas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfTWV0YXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfU2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfU2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_SearchResponsive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfU2VhcmNoUmVzcG9uc2l2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/MainPartials/_Styles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1haW5QYXJ0aWFsc1xfU3R5bGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/Basket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcQmFza2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/AmazingItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEFtYXppbmdJdGVtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Banners/BottomBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJhbm5lcnNcQm90dG9tQmFubmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Banners/BottomMiddleBanners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJhbm5lcnNcQm90dG9tTWlkZGxlQmFubmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Banners/SideBanners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJhbm5lcnNcU2lkZUJhbm5lcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Banners/TopBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJhbm5lcnNcVG9wQmFubmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Banners/TopMiddleBanners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJhbm5lcnNcVG9wTWlkZGxlQmFubmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Brands.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXEJyYW5kcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/LatestItems/LatestProductWidget.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXExhdGVzdEl0ZW1zXExhdGVzdFByb2R1Y3RXaWRnZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/ServicesWidget.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXFNlcnZpY2VzV2lkZ2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/Slider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXFNsaWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/IndexComponents/SuggestionWidget.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcSW5kZXhDb21wb25lbnRzXFN1Z2dlc3Rpb25XaWRnZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/MenuItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcTWVudUl0ZW1zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/ViewComponent/ResponsiveMenuItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXdDb21wb25lbnRcUmVzcG9uc2l2ZU1lbnVJdGVtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/_SingleProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaW5nbGVQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/DiasComputer/DiasComputer/DiasComputer.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xs1jfuw0d8

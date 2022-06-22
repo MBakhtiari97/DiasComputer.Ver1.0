@@ -1,0 +1,140 @@
+﻿@model Tuple<List<DiasComputer.DataLayer.Entities.SiteResources.EmailHistory>,int>
+@{
+    ViewData["Title"] = "سوابق ایمیل های ارسال شده";
+}
+
+<div class="margin-pages">
+    <h1>لیست ایمیل های ارسال شده</h1>
+    <p>
+        <form method="get" asp-action="SentEmailsHistory">
+            <label>فیلتر بر اساس موضوع و یا مخاطبان :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-5">
+                        <input name="filter" type="text" class="form-control" placeholder="موضوع را وارد کنید" value="@((ViewBag.Filter!=null)?ViewBag.Filter:"")"/>
+                    </div>
+                    <div class="col col-md-5">
+                        <select name="typeId" class="form-control">
+                            <option>همه ایمیل ها</option>
+                            <option value="1">ایمیل های عمومی</option>
+                            <option value="2">ایمیل های خصوصی</option>
+                            <option value="3">ایمیل های مدیران</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary" />
+                        <a href="/Admin/ManageEmail/SentEmailsHistory" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().Text)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().EmailTypeId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        @Html.Raw(item.Text)
+                    </td>
+                    <td>
+                        @switch (item.EmailTypeId)
+                        {
+                            case 1:
+                                <p>ایمیل عمومی</p>
+                                break;
+                            case 2:
+                                <p>ایمیل خصوصی</p>
+                                break;
+                            case 3:
+                                <p>ایمیل مدیران</p>
+                                break;
+                        }
+                    </td>
+                    <td class="text-center marginButtons">
+                         <a class="btn btn-sm btn-outline-success" asp-action="EmailDetails" asp-controller="ManageEmail" asp-route-emailId="@item.EmailId">جزئیات</a>
+                            <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.EmailId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف ایمیل</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این ایمیل از لیست سوابق اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteEmail" method="get">
+                        <input id="emailId" type="hidden" name="emailId"/>
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="SentEmailsHistory" asp-controller="ManageEmail" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+    function SendID(emailId) {
+        var emailIdValue = document.getElementById("emailId");
+        emailIdValue.value = emailId;
+    }
+</script>
+
+<!--EndPaging-->

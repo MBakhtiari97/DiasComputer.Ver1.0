@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8907d9c1-3ce2-44bf-be1b-306fc5513b5e": {
+      "ProjectGuid": "8907d9c1-3ce2-44bf-be1b-306fc5513b5e",
+      "DisplayName": "DiasComputer.Core",
+      "ColorIndex": 0
+    },
+    "c8945940-9476-4430-9ca4-a0326e6b9537": {
+      "ProjectGuid": "c8945940-9476-4430-9ca4-a0326e6b9537",
+      "DisplayName": "DiasComputer.Web",
+      "ColorIndex": 1
+    },
+    "31cd65d9-ad08-4eff-8db2-863034f8c928": {
+      "ProjectGuid": "31cd65d9-ad08-4eff-8db2-863034f8c928",
+      "DisplayName": "DiasComputer.DataLayer",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

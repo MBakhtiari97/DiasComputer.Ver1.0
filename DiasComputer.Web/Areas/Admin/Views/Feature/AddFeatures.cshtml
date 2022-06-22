@@ -1,0 +1,49 @@
+﻿@model DiasComputer.Core.DTOs.Product.ProductFeaturesViewModel
+@{
+    ViewData["Title"] = "افزودن ویژگی جدید";
+}
+
+<div class="margin-pages">
+    <h1>افزودن ویژگی جدید</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="AddFeatures" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId" value="@ViewBag.ProductId"/>
+                @if (ViewBag.FeatureId != null)
+                {
+                    <input type="hidden" asp-for="ParentId" value="@ViewBag.FeatureId"/>
+                }
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FeatureTitle" class="control-label"></label>
+                        <input asp-for="FeatureTitle" class="form-control"/>
+                        <span asp-validation-for="FeatureTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="FeatureDescription" class="control-label"></label>
+                        <input asp-for="FeatureDescription" class="form-control"/>
+                        <span asp-validation-for="FeatureDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsShortFeature" class="control-label"></label>
+                        <br/>
+                        <input asp-for="IsShortFeature"/>
+                        <span asp-validation-for="IsShortFeature" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="افزودن ویژگی" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="FeaturesIndex" asp-controller="Feature" asp-route-productId="@ViewBag.ProductId">انصراف</a>
+    </div>
+</div>
+

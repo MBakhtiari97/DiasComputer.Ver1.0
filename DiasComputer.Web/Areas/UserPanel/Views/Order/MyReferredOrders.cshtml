@@ -1,0 +1,78 @@
+﻿@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.Core.DTOs.Account.ReferredOrdersViewModel>
+@{
+    ViewData["Title"] = "لیست سفارشات مرجوعی";
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-12">
+                            <h1 class="title-tab-content">مرجوعی ها</h1>
+                        </div>
+                        <div class="content-section default">
+                            <div class="row">
+                                @if (Model.Any())
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-md-12 col-sm-12">
+
+                                            <div class="profile-recent-fav-row">
+                                                <div class="profile-recent-fav-col profile-recent-fav-col-title">
+                                                    <div class="profile-recent-fav-price">
+                                                        <label>شماره سفارش :</label>
+                                                        <p>DC-@item.OrderId</p>
+
+                                                        <label>تاریخ سفارش :</label>
+                                                        <p>@item.OrderDate.ToShamsi()</p>
+
+                                                        <label>مبلغ کل سفارش :</label>
+                                                        <p>@item.OrderSumPrice.ToString("#,0") هزار تومان</p>
+
+                                                        <label>شماره مرجوعی :</label>
+                                                        <p>@item.ReferredCode</p>
+
+                                                        <label>وضعیت مرجوعی :</label>
+                                                        @if (@item.ReferredStatus)
+                                                        {
+                                                            <p class="text-success">موفق</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-danger">ناموفق</p>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 text-left mb-3">
+                                                    <a class="view-product" href="/MyProfile/Orders/ShowDetails/@item.OrderId">مشاهده جزئیات سفارش</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-12 text-center">
+                                        <div class="content-section pt-5 pb-5">
+                                            <div class="icon-empty">
+                                                <i class="now-ui-icons travel_info"></i>
+                                            </div>
+                                            <h1 class="text-empty">موردی برای نمایش وجود ندارد!</h1>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>
+

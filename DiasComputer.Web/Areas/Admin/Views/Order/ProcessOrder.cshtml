@@ -1,0 +1,166 @@
+﻿@using DiasComputer.Core.DTOs.Orders
+@model List<DiasComputer.Core.DTOs.Orders.OrderDetailsViewModel>
+@{
+    ViewData["Title"] = "پردازش سفارش";
+    UserDetailsForProcessOrderViewModel deliveryDetails = @ViewBag.DeliveryDetails;
+}
+
+<div class="margin-pages">
+    <h1>پردازش سفارش DC-@Model.First().OrderId</h1>
+    <h4>جزئیات سفارش</h4>
+    <hr />
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().ProductTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().ProductImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().Count)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().Warranty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => Model.First().ProductPriceSum)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-secondary">
+                        <p><b>DC-@item.OrderId</b></p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductTitle)
+                    </td>
+                    <td>
+                        <img src="/images/productThumbnailImages/@item.ProductImage" class="img-thumbnail" />
+                    </td>
+                    <td class="text-danger">
+                        <p><b>@item.ProductPrice.ToString("#,0") تومان</b></p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Warranty)
+                    </td>
+                    <td class="text-danger">
+                        <p><b>@item.ProductPriceSum.ToString("#,0") تومان</b></p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+    <br />
+    <hr />
+    <h4>جزئیات پستی</h4>
+    <hr />
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.NationalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => deliveryDetails.ZipCode)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.NationalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => deliveryDetails.ZipCode)
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    
+    <div class="col-md-12">
+        @if (Model.First().IsProcessed == false)
+        {
+            <a class="btn btn-sm btn-outline-success" asp-action="Process" asp-route-orderId="@Model.First().OrderId">تغییر وضعیت به پردازش شده</a>
+        }
+        else
+        {
+            <a class="btn btn-sm btn-outline-success">این سفارش پردازش شده</a>
+        }
+        <a class="btn btn-sm btn-outline-success" asp-action="PrintInvoice" asp-route-orderId="@Model.First().OrderId" asp-route-userId="@deliveryDetails.UserId">چاپ فاکتور</a>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        function Print() {
+            window.print();
+        }
+    </script>
+}

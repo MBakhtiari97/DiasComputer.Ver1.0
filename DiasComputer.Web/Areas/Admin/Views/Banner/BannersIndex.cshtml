@@ -1,0 +1,108 @@
+﻿@model List<DiasComputer.Core.DTOs.Admin.BannersViewModel>
+@{
+    ViewData["Title"] = "بنر ها";
+}
+
+<div class="margin-pages">
+    <h1>لیست بنر ها</h1>
+    <table class="table table-responsive-lg col-12 table-striped text-center">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BannerSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BannerImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BannerPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BannerAltName)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.First().IsActive)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <p>@item.BannerSize پیکسل</p>
+                    </td>
+                    <td>
+                        <img src="/images/banner/@item.BannerImg" class="img-thumbnail"/>
+                    </td>
+                    <td>
+                        @switch (item.BannerPosition)
+                        {
+                            case "Top":<p>بالا</p>
+                                break;
+                            case "TopMiddle":<p>میانی بالا</p>
+                                break;
+                            case "BottomMiddle":<p>میانی پایین</p>
+                                break;
+                            case "Bottom":<p>پایین</p>
+                                break;
+                            case "Side":<p>کناری</p>
+                                break;
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.BannerAltName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.IsActive)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateBanner" asp-route-bannerId="@item.BannerId">بروزرسانی بنر</a>
+                        @if (!item.IsActive)
+                        {
+                            <a class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.BannerId)">فعال کردن</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.BannerId)">غیرفعال کردن</a>
+                        }
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">غیرفعالسازی بنر</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از غیرفعالسازی نمایش این بنر اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeactivateBanner" method="get">
+                        <input id="bannerId" type="hidden" name="bannerId" />
+                        <button type="submit" class="btn btn-danger">تایید</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+ </div>
+<script>
+
+    function SendID(bannerId) {
+        var bannerIdValue = document.getElementById("bannerId");
+        bannerIdValue.value = bannerId;
+    }
+</script>

@@ -1,0 +1,65 @@
+﻿@model DiasComputer.Core.DTOs.Account.SignInViewModel
+@{
+    ViewData["Title"] = "ورود";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="col col-md-12 alert alert-danger text-center">
+        <h5><i class="fa fa-times-circle"></i> شما مجوز دسترسی به این بخش را ندارید  <i class="fa fa-times-circle"></i></h5>
+    </div>
+}
+<div class="wrapper default">
+        <div class="container">
+            <div class="row">
+                <div class="main-content col-12 col-md-7 col-lg-5 mx-auto">
+                    <div class="account-box">
+                        <a href="#" class="logo">
+                            <img src="/main-resources/assets/img/logo.png" alt="">
+                        </a>
+                        <div class="account-box-title text-right">ورود به دیاس کامپیوتر</div>
+                        <div class="account-box-content">
+                            <form class="form-account" asp-action="SignIn">
+                                <div class="form-account-title">آدرس ایمیل</div>
+                                <div class="form-account-row">
+                                    <label class="input-label"><i class="now-ui-icons users_single-02"></i></label>
+                                    <input asp-for="EmailAddress" class="input-field" type="text" placeholder="آدرس ایمیل خود را وارد نمایید">
+                                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                </div>
+                                <div class="form-account-title">رمز عبور
+                                    <a href="/RecoverPassword" class="btn-link-border form-account-link">رمز
+                                        عبور خود را فراموش
+                                        کرده ام</a>
+                                </div>
+                                <div class="form-account-row">
+                                    <label class="input-label"><i class="now-ui-icons ui-1_lock-circle-open"></i></label>
+                                    <input asp-for="Password" class="input-field" type="password" placeholder="رمز عبور خود را وارد نمایید">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-account-agree">
+                                    <label class="checkbox-form checkbox-primary">
+                                        <input type="checkbox" asp-for="RememberMe" checked="checked" id="agree">
+                                        <span class="checkbox-check"></span>
+                                    </label>
+                                    <label for="agree">مرا به خاطر داشته باش</label>
+                                </div>
+                                <div class="form-account-row form-account-submit">
+                                    <div class="g-recaptcha" data-sitekey="6LeXlokgAAAAAGJ2fMw2wFLyp0oC7MYvG934Qjk8"></div>
+                                    <div class="parent-btn">
+                                        <button class="dk-btn dk-btn-info" type="submit">
+                                            ورود به دیاس کامپیوتر
+                                            <i class="fa fa-sign-in"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="account-box-footer">
+                            <span>کاربر جدید هستید؟</span>
+                            <a href="/SignUp" class="btn-link-border">ثبت‌نام در
+                                دیاس کامپیوتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

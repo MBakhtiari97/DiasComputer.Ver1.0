@@ -1,0 +1,79 @@
+﻿@model List<DiasComputer.DataLayer.Entities.SiteResources.Logo>
+@{
+    ViewData["Title"] = "برند ها";
+}
+
+<div class="margin-pages">
+    <h1>لیست برند ها</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="CreateBrand" asp-controller="Home">افزودن برند جدید</a>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().LogoTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().LogoImg)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.LogoTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.IsActive)
+                    </td>
+                    <td>
+                        <img src="/images/brand/@item.LogoImg" alt="لوگوی برند" class="img-thumbnail admin-brands-img" />
+                    </td>
+                    <td class="text-center marginButtons">
+                         <a class="btn btn-sm btn-outline-success" asp-action="UpdateBrand" asp-route-brandId="@item.LogoId">ویرایش</a>
+                            <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.LogoId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف برند</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این برند اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteBrand" method="get">
+                        <input id="brandId" type="hidden" name="brandId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+<script>
+
+    function SendID(brandId) {
+        var brandIdValue = document.getElementById("brandId");
+        brandIdValue.value = brandId;
+    }
+</script>

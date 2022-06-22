@@ -1,0 +1,78 @@
+﻿@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.DataLayer.Entities.Orders.Order>
+@{
+    ViewData["Title"] = "سفارشات کاربر";
+}
+
+@if (!Model.Any())
+{
+    <div class="margin-pages col-12 text-center">
+        <h3>تاکنون سفارشی توسط این کاربر ثبت نشده است</h3>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+else
+{
+    <div class="margin-pages col-12">
+        <h1>سفارشات</h1>
+        <table class="table table-responsive-lg col-12 table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <p>شماره سفارش</p>
+                    </th>
+                    <th>
+                        <p>تاریخ سفارش</p>
+                    </th>
+                    <th>
+                        <p>مبلغ سفارش</p>
+                    </th>
+                    <th>
+                        <p>وضعیت بازگردانی</p>
+                    </th>
+                    <th>
+                        <p>وضعیت سفارش</p>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>DC-@order.OrderId</p>
+                        </td>
+                        <td>
+                            <p>@order.OrderDate.ToShamsi()</p>
+                        </td>
+                        <td>
+                            <p>@order.OrderSum.ToString("#,0") تومان</p>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => order.ReferSubmitted)
+                        </td>
+                        <td>
+                            @switch (order.IsCancelled)
+                            {
+                                case true:
+                                    <p class="text-danger">لغو شده</p>
+                                    break;
+                                case false:
+                                    <p class="text-success">نهایی شده</p>
+                                    break;
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="CancelOrder" asp-controller="User" asp-route-userId="@order.UserId" asp-route-orderId="@order.OrderId">لغو سفارش</a>
+                            <a class="btn btn-sm btn-outline-success" asp-action="OrderDetails" asp-controller="User" asp-route-userId="@order.UserId" asp-route-orderId="@order.OrderId">جزئیات</a>
+                            <a class="btn btn-sm btn-outline-info" asp-action="OrderTransactionDetails" asp-controller="User" asp-route-orderId="@order.OrderId">فاکتور</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+

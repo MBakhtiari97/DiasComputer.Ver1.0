@@ -1,0 +1,37 @@
+﻿@model DiasComputer.DataLayer.Entities.Groups.Group
+@{
+    ViewData["Title"] = "افزودن دسته بندی";
+}
+
+<div class="margin-pages">
+    <h1>افزودن دسته بندی جدید</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="AddCategory" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (ViewBag.GroupId != null)
+                {
+                    <input type="hidden" asp-for="ParentId" value="@ViewBag.GroupId"/>
+                }
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="GroupTitle" class="control-label"></label>
+                        <input asp-for="GroupTitle" class="form-control"/>
+                        <span asp-validation-for="GroupTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="افزودن دسته بندی" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="Index">انصراف</a>
+    </div>
+</div>
+

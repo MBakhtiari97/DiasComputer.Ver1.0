@@ -1,0 +1,68 @@
+﻿@model DiasComputer.Core.DTOs.Account.SignUpViewModel
+@{
+    ViewData["Title"] = "عضویت";
+}
+
+<div class="wrapper default">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-12 col-md-7 col-lg-5 mx-auto">
+                <div class="account-box">
+                    <a href="#" class="logo">
+                        <img src="/main-resources/assets/img/logo.png" alt="">
+                    </a>
+                    <div class="account-box-title">ثبت‌نام در دیاس کامپیوتر</div>
+                    <div class="message-light text-center">
+                        پس از تکمیل ثبت نام ، ایمیلی حاوی لینک فعالسازی برای شما ارسال خواهد شد.
+                        لطفا با مراجعه به آدرس ایمیل خود برروی لینک کلیک کرده و پروفایل خود را فعال نمایید.
+                    </div>
+                    <div class="account-box-content">
+                        <form class="form-account" asp-action="SignUp">
+                            <div class="form-account-title">پست الکترونیک</div>
+                            <div class="form-account-row">
+                                <label class="input-label"><i class="now-ui-icons users_single-02"></i></label>
+                                <input class="input-field" asp-for="EmailAddress" placeholder="پست الکترونیک خود را وارد نمایید">
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            </div>
+                            <div class="form-account-title">کلمه عبور</div>
+                            <div class="form-account-row">
+                                <label class="input-label"><i class="now-ui-icons ui-1_lock-circle-open"></i></label>
+                                <input class="input-field" asp-for="Password" type="password" placeholder="کلمه عبور خود را وارد نمایید">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-account-title">تکرار کلمه عبور</div>
+                            <div class="form-account-row">
+                                <label class="input-label"><i class="now-ui-icons ui-1_lock-circle-open"></i></label>
+                                <input class="input-field" asp-for="ConfirmPassword" type="password" placeholder="تکرار کلمه عبور خود را وارد نمایید">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-account-agree">
+                                <label class="checkbox-form checkbox-primary">
+                                    <input type="checkbox" checked="checked" asp-for="AcceptRules" disabled>
+                                    <span class="checkbox-check"></span>
+                                </label>
+                                <label for="agree">
+                                    <a href="#" class="btn-link-border">حریم خصوصی</a> و <a href="#" class="btn-link-border">شرایط و قوانین</a> استفاده از سرویس های سایت
+                                    دیاس کامپیوتر را مطالعه نموده و با کلیه موارد آن موافقم.
+                                </label>
+                            </div>
+                            <div class="form-account-row form-account-submit">
+                                <div class="g-recaptcha" data-sitekey="6LeXlokgAAAAAGJ2fMw2wFLyp0oC7MYvG934Qjk8"></div>
+                                <div class="parent-btn">
+                                    <button class="dk-btn dk-btn-info" type="submit">
+                                        ثبت نام در دیاس کامپیوتر
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="account-box-footer">
+                        <span>قبلا در دیاس کامپیوتر ثبت‌نام کرده‌اید؟</span>
+                        <a href="/SignIn" class="btn-link-border">وارد شوید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

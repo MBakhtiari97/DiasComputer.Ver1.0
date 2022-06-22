@@ -1,0 +1,91 @@
+﻿@using DiasComputer.DataLayer.Entities.SiteResources
+@model DiasComputer.DataLayer.Entities.SiteResources.Ticket
+@inject IConfiguration _configuration;
+
+@{
+    ViewData["Title"] = "تماس با ما";
+}
+
+@section Metas
+{
+    <meta name="description" content="تماس با دیاس کامپیوتر" />
+    <meta property="og:title" content="تماس با ما" />
+    <meta property="og:description" content="تماس با دیاس کامپیوتر" />
+    <meta property="og:url" content="@_configuration["Address"]contactus/" />
+}
+
+<div class="main-content col-12 col-md-8 mx-auto">
+    <div class="account-box checkout-page">
+        <a href="/" class="logo">
+            <img src="/main-resources/assets/img/logo.png" alt="">
+        </a>
+        @if (ViewBag.ContactInfo != null)
+        {
+            List<SiteContactDetail> contactDetails = ViewBag.ContactInfo;
+            <div class="container text-center" style="margin-top: 50px;">
+                <h5>اطلاعات تماس</h5>
+                @foreach (var contactDetail in contactDetails)
+                {
+                    <p><span style="color: #F05D69">@contactDetail.SCD_TypeTitle </span>: @contactDetail.SCD_Value</p>
+                }
+            </div>
+        }
+
+        <div class="account-box-content">
+            <form class="form-account" asp-action="ContactUs" asp-controller="Home">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="checkout-title text-right">مشخصات شما</div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-account-title">نام و نام خانوادگی</div>
+                        <div class="form-account-row">
+                            <input class="input-field text-right" asp-for="TicketSenderName" type="text" placeholder="نام و نام خانوادگی خود را وارد نمایید">
+                            <span class="text-danger" asp-validation-for="TicketSenderName"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-account-title">آدرس ایمیل</div>
+                        <div class="form-account-row">
+                            <input class="input-field" asp-for="TicketSenderEmail" type="text" placeholder="آدرس ایمیل خود را وارد نمایید">
+                            <span class="text-danger" asp-validation-for="TicketSenderEmail"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-account-title">تلفن همراه</div>
+                        <div class="form-account-row">
+                            <input class="input-field" asp-for="TicketSenderPhone" type="text" placeholder="تلفن همراه خود را وارد نمایید">
+                            <span class="text-danger" asp-validation-for="TicketSenderPhone"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-account-title">موضوع تیکت</div>
+                        <div class="form-account-row">
+                            <input class="input-field text-right" asp-for="TicketSubject" type="text" placeholder="موضوع تیکت خود را وارد نمایید">
+                            <span class="text-danger" asp-validation-for="TicketSubject"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-account-title">شرح</div>
+                        <div class="form-account-row">
+                            <textarea class="input-field text-right" rows="10" asp-for="TicketDescription" placeholder="شرح تیکت را وارد نمایید ..."></textarea>
+                            <span class="text-danger" asp-validation-for="TicketDescription"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mx-auto">
+                    <div class="form-account-row form-account-submit">
+                        <div class="g-recaptcha" data-sitekey="6LeXlokgAAAAAGJ2fMw2wFLyp0oC7MYvG934Qjk8"></div>
+                        <div class="parent-btn">
+                            <button class="dk-btn dk-btn-info" type="submit">
+                                ثبت و ارسال تیکت
+                                <i class="fa fa-sign-in"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

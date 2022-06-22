@@ -1,0 +1,161 @@
+﻿@model Tuple<List<DiasComputer.DataLayer.Entities.SiteResources.Ticket>,int>
+@{
+    ViewData["Title"] = "تیکت ها";
+}
+
+<div class="margin-pages">
+    <h1>تیکت ها</h1>
+    <p>
+        <form method="get" asp-action="Index">
+            <label>فیلتر بر اساس وضعیت :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-5">
+                        <select name="isRead" class="form-control">
+                            <option value="null">فیلتر بر اساس وضعیت تیکت</option>
+                            <option value="true">تیکت های خوانده شده</option>
+                            <option value="false">تیکت های جدید</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-5">
+                        <select name="isAnswered" class="form-control">
+                            <option value="null">فیلتر بر اساس وضعیت پاسخ دهی</option>
+                            <option value="true">تیکت های پاسخ داده شده</option>
+                            <option value="false">تیکت های در انتظار پاسخ</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary" />
+                        <a href="/Admin/Ticket" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketSenderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketSenderEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketSenderIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketSenderPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketSubject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().TicketDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().IsTicketRead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item1.First().IsTicketAnswered)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSenderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSenderEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSenderIP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSenderPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSubject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsTicketRead)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsTicketAnswered)
+                </td>
+                <td class="text-center marginButtons">
+                    <a class="btn btn-sm btn-outline-success" asp-action="UpdateTicketStatus" asp-route-ticketId="@item.TicketId">تغییر وضعیت</a>&nbsp;|
+                    <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.TicketId)">حذف</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف تیکت</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این تیکت اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteTicket" method="get">
+                        <input id="ticketId" type="hidden" name="ticketId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+    <!-- Pagination -->
+</div>
+
+<!--Paging-->
+<form asp-action="Index" asp-controller="Ticket" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+<script>
+
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+    
+    function SendID(ticketId) {
+        var ticketIdValue = document.getElementById("ticketId");
+        ticketIdValue.value = ticketId;
+    }
+</script>

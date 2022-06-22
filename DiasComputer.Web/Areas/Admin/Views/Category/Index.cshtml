@@ -1,0 +1,97 @@
+﻿@model List<DiasComputer.DataLayer.Entities.Groups.Group>
+@{
+    ViewData["Title"] = "لیست دسته بندی ها";
+}
+
+<div class="margin-pages">
+    <h1>لیست دسته بندی ها</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="AddCategory">دسته بندی جدید</a>
+        @*<partial name="_SearchInUsersPartialView" />*@
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <p>دسته بندی اصلی</p>
+                </th>
+                <th>
+                    <p>دسته بندی های فرعی</p>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(f => f.ParentId == null))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupTitle)
+                        <a asp-action="AddCategory" asp-route-groupId="@item.GroupId" class="btn btn-success btn-sm">افزودن دسته بندی فرعی</a>
+                    </td>
+                    <td>
+                        @if (Model.Any(f => f.ParentId == item.GroupId))
+                        {
+                            <ul>
+                                @foreach (var subItem in Model.Where(f => f.ParentId == item.GroupId))
+                                {
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <li>@subItem.GroupTitle</li>
+                                            </div>
+                                            <div class="text-left col-md-6 marginButtons">
+                                                <span>
+                                                    <a class="btn btn-sm btn-outline-secondary" asp-action="UpdateCategory" asp-route-groupId="@subItem.GroupId">ویرایش</a>
+                                                    <a class="btn btn-sm btn-outline-secondary" asp-action="DeleteCategory" asp-route-groupId="@subItem.GroupId">حذف</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </ul>
+                        }
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateCategory" asp-route-groupId="@item.GroupId">ویرایش</a>
+                        <br />
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.GroupId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف محصول</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این محصول اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteCategory" method="get">
+                        <input id="groupId" type="hidden" name="groupId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+
+<script>
+    function SendID(groupId) {
+        var groupIdValue = document.getElementById("groupId");
+        groupIdValue.value = groupId;
+    }
+</script>
+

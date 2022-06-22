@@ -1,0 +1,38 @@
+﻿@model DiasComputer.DataLayer.Entities.SiteResources.EmailHistory
+@{
+    ViewData["Title"] = "جزئیات";
+}
+
+<div class="margin-pages">
+    <h1>جزئیات</h1>
+    <hr />
+    <div class="col col-md-12">
+        <div class="row">
+            <div class="col col-12 card card-body card-secondary">
+                <label>موضوع ایمیل :<br /> @Model.Subject</label>
+            </div>
+            <div class="col col-12 card card-body card-secondary">
+                <label>متن ایمیل :<br /> -@Html.Raw(Model.Text)</label>
+            </div>
+            <div class="col col-12 card card-body card-secondary">
+                <label>
+                    مخاطبان ایمیل :<br /> @switch (Model.EmailTypeId)
+                    {
+                        case 1:
+                            <p>ایمیل عمومی</p>
+                            break;
+                        case 2:
+                            <p>ایمیل خصوصی</p>
+                            break;
+                        case 3:
+                            <p>ایمیل مدیران</p>
+                            break;
+                    }
+                </label>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" href="/Admin/ManageEmail/SentEmailsHistory">بازگشت به لیست ایمیل ها</a>
+</div>
+
+

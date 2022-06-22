@@ -1,0 +1,102 @@
+﻿@model Tuple<List<DiasComputer.Core.DTOs.Product.SingleProductInListViewModel>,int,int>
+@{
+    ViewData["Title"] = " جستجو برای " + ViewBag.SearchPhrase;
+}
+<div class="container">
+    <div class="row">
+        <main class="search-page amazing-search default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header-amazing-search"></div>
+                    </div>
+                    <div class="amazing-content col-12 col-sm-12 col-md-12 col-lg-12 order-2">
+                        <div class="breadcrumb-section default">
+                            <ul class="breadcrumb-list">
+                                <li>
+                                    <a href="#">
+                                        <span>فروشگاه اینترنتی دیاس کامپیوتر</span>
+                                    </a>
+                                </li>
+                                <li><span>@ViewBag.SearchPhrase</span></li>
+
+                            </ul>
+                        </div>
+                        <div class="listing default">
+                            <div class="listing-counter">@Model.Item3 کالا</div>
+                            @if (Model.Item1.Any())
+                            {
+                                 <div class="listing-header default">
+                                <ul class="listing-sort nav nav-tabs justify-content-center" role="tablist" data-label="مرتب‌سازی بر اساس :">
+                                    <form action="/Search" method="get">
+                                        <input type="hidden" name="pageId" value="@ViewBag.PageId" />
+                                        <input type="hidden" id="sortProductsBy" name="orderByType" value="newest" />
+                                        <input type="hidden" name="searchPhrase" value="@ViewBag.SearchPhrase" />
+
+                                    <li>
+                                        <a data-toggle="tab" href="#new" role="tab" aria-expanded="true" onclick="SetSortBy('newest')">جدیدترین</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#down-price" role="tab" aria-expanded="false" onclick="SetSortBy('priceUp')">ارزان‌ترین</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#top-price" role="tab" aria-expanded="false" onclick="SetSortBy('priceDown')">گران‌ترین</a>
+                                    </li>
+                                    <li>
+                                        <button type="submit" class="btn btn-warning btn-sm">مرتب کن</button>
+                                    </li>
+                                    </form>
+                                </ul>
+                            </div>
+                            <div class="tab-content default text-center">
+                                <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
+                                    <div class="container no-padding-right">
+                                        <ul class="row listing-items">
+                                            @foreach (var product in Model.Item1)
+                                            {
+                                                <partial name="_SingleProduct" model="product" />
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.Item2 > 1)
+                            {
+                                <div class="pager default text-center">
+                                    <ul class="pager-items">
+                                        @{
+                                            int currentPage = ViewBag.PageId;
+                                        }
+                                        @for (int i = 1; i <= Model.Item2; i++)
+                                        {
+                                            <li>
+                                                <a class="pager-item @((i == currentPage) ? "is-active" : "")" href="/Search/@ViewBag.SearchPhrase?pageId=@i">@i</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            }
+                            else
+                            {
+                                <div class="text-center" style="margin-bottom: 100px;">
+                                    <h3 style="margin: 35px;">جستجو برای عبارت '@ViewBag.SearchPhrase' کالایی را در بر نداشت !</h3>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+@section Scripts
+{
+<script>
+    function SetSortBy(value) {
+        var inputSort = document.getElementById("sortProductsBy");
+        inputSort.value = value;
+    }
+</script>
+}
+

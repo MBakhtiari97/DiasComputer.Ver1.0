@@ -1,0 +1,252 @@
+﻿@model Tuple<DiasComputer.DataLayer.Entities.Users.PostDetail,List<DiasComputer.Core.DTOs.Cart.CartItemsViewModel>>
+@{
+    ViewData["Title"] = "تایید نهایی";
+}
+
+
+
+<div class="wrapper default shopping-page">
+    <header class="header-shopping default">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="checkout-steps">
+                        <li>
+                            <a href="#">
+                                <span>اطلاعات ارسال</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#" class="active">
+                                <span>پرداخت</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <span>اتمام خرید و ارسال</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-page default">
+        <div class="container">
+            <form asp-action="ShowCheckoutDetails" method="post" id="shipping-data-form">
+                <div class="row">
+                    <div class="cart-page-content col-xl-9 col-lg-8 col-md-12 order-1">
+                        <div class="cart-page-title">
+                            <h1>انتخاب آدرس تحویل سفارش</h1>
+                        </div>
+                        <section class="page-content default">
+                            <div class="address-section">
+                                <div class="checkout-contact">
+                                    <div class="checkout-contact-content">
+                                        <ul class="checkout-contact-items">
+                                            <li class="checkout-contact-item">
+                                                گیرنده:
+                                                <span class="full-name">@Model.Item1.UserName</span>
+                                            </li>
+                                            <li class="checkout-contact-item">
+                                                <div class="checkout-contact-item checkout-contact-item-mobile">
+                                                    شماره تماس:
+                                                    <span class="mobile-phone">@Model.Item1.PhoneNumber</span>
+                                                </div>
+                                                <div class="checkout-contact-item-message">
+                                                    کد پستی:
+                                                    <span class="post-code">@Model.Item1.ZipCode</span>
+                                                </div>
+                                                <br>
+                                                استان
+                                                <span class="state">@Model.Item1.City</span>
+                                                ، ‌شهر
+                                                <span class="city">@Model.Item1.City</span>
+                                                ،
+                                                <span class="address-part">@Model.Item1.Address</span>
+                                            </li>
+                                        </ul>
+                                        <div class="checkout-contact-badge">
+                                            <i class="now-ui-icons ui-1_check"></i>
+                                        </div>
+                                    </div>
+                                    <a class="checkout-contact-location" href="/Cart/Form">تغییر آدرس ارسال</a>
+                                </div>
+                            </div>
+
+                            <div class="headline">
+                                <span>انتخاب نوع پرداخت</span>
+                            </div>
+                            <div class="checkout-shipment">
+                                <div class="radio" onclick="ShowWalletBalance()">
+                                    <input type="radio" name="paymentMethod" id="radio1" value="online" checked>
+                                    <label for="radio1">
+                                        درگاه پرداخت آنلاین
+                                    </label>
+                                    <input type="radio" name="paymentMethod" id="radio2" value="wallet">
+                                    <label for="radio2">
+                                        کیف پول
+                                    </label>
+                                    <span class="text-danger" id="walletBalance" style="display: none;"> | موجودی کیف پول شما : @ViewBag.WalletBalance.ToString("#,0") تومان</span>
+                                </div>
+                            </div>
+
+                            <div class="headline">
+                                <span>کد تخفیف</span>
+                            </div>
+
+                            <form asp-action="ShowCheckoutDetails" method="post">
+                                <div class="checkout-shipment">
+                                    <div class="radio">
+                                        <p> <span class="fa fa-barcode"></span>&nbsp;آیا کد تخفیف دارید ؟ می توانید در فیلد زیر آن را وارد نمایید :</p>
+                                        <input type="text" class="form-control" name="coupon" placeholder="کد تخفیف خود را وارد نمایید !"/>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="headline">
+                                <span>مرسوله ۱ از ۱</span>
+                            </div>
+                            <div class="checkout-pack">
+                                <section class="products-compact">
+                                    <div class="box">
+                                        <div class="row">
+                                            @foreach (var item in Model.Item2)
+                                            {
+                                                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                                    <div class="product-box-container">
+                                                        <div class="product-box product-box-compact">
+                                                            <a class="product-box-img">
+                                                                <img src="/images/productThumbnailImages/@item.ProductImage">
+                                                            </a>
+                                                            <div class="product-box-title">
+                                                                @item.ProductName
+                                                            </div>
+                                                            <div class="product-box-title">
+                                                                <span>رنگ: @item.ProductColor</span> |
+                                                                <span>تعداد: @item.Count</span> |
+                                                                @if (@item.ProductWarranty == null)
+                                                                {
+                                                                    <span>گارانتی: اصالت و سلامت فیزیکی</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>گارانتی: @item.ProductWarranty</span>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </section>
+                                <div class="row">
+                                    <div class="checkout-time-table checkout-time-table-time">
+                                        <span class="checkout-additional-options-checkbox-image"></span>
+                                        <div>
+                                            <div class="checkout-time-table-title-bar checkout-time-table-title-bar-city">
+                                                بازه تحویل سفارش: زمان تقریبی تحویل 2 تا 5 روز کاری
+                                            </div>
+                                            <ul class="checkout-time-table-subtitle-bar">
+                                                <li>شیوه ارسال : پست پیشتاز با ظرفیت اختصاصی برای دیاس کامپیوتر</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                    <aside class="cart-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-2">
+                        <div class="checkout-aside">
+                            <div class="checkout-summary">
+                                <div class="checkout-summary-main">
+                                    <ul class="checkout-summary-summary">
+                                        <li><span>مبلغ کل (@Model.Item2.Sum(o => o.Count) کالا)</span><span>@ViewBag.TotalPrice.ToString("#,0") تومان</span></li>
+                                        <li>
+                                            <span>هزینه ارسال</span>
+                                            @if (@Model.Item2.Sum(o => o.ProductPrice * o.Count) > 300000)
+                                            {
+                                                <span>
+                                                    رایگان
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>بیست و پنج هزار تومان</span>
+                                            }
+                                        </li>
+                                    </ul>
+                                    <div class="checkout-summary-devider">
+                                        <div></div>
+                                    </div>
+                                    <div class="checkout-summary-content">
+                                        @*<form asp-action="ShowCheckoutDetails">*@
+                                        <input type="hidden" name="totalPrice" value="@ViewBag.TotalPrice" />
+                                        <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+                                        <div class="checkout-summary-price-value">
+                                            <span class="checkout-summary-price-value-amount">@ViewBag.TotalPrice.ToString("#,0") تومان</span>
+                                        </div>
+                                        <a href="#" class="selenium-next-step-shipping">
+                                            <div class="parent-btn">
+                                                <button type="submit" class="dk-btn dk-btn-info">
+                                                    پرداخت و ثبت سفارش
+                                                    <i class="now-ui-icons shopping_basket"></i>
+                                                </button>
+                                            </div>
+                                        </a>
+                                        @* </form>*@
+                                        <div>
+                                            <span>
+                                                کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی
+                                                را تکمیل
+                                                کنید.
+                                            </span>
+                                            <span class="wiki wiki-holder">
+                                                <span class="wiki-sign"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout-feature-aside">
+                                <ul>
+                                    <li class="checkout-feature-aside-item checkout-feature-aside-item-guarantee">
+                                        هفت روز
+                                        ضمانت تعویض
+                                    </li>
+                                    <li class="checkout-feature-aside-item checkout-feature-aside-item-cash">
+                                        پرداخت در محل با
+                                        کارت بانکی
+                                    </li>
+                                    <li class="checkout-feature-aside-item checkout-feature-aside-item-express">
+                                        تحویل اکسپرس
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+@section Scripts
+{
+<script>
+    function ShowWalletBalance() {
+        var balanceTxt = document.getElementById("walletBalance");
+        var walletBtn = document.getElementById("radio2");
+
+        if (walletBtn.checked === true) {
+            balanceTxt.style.display = "inline";
+        } else {
+            balanceTxt.style.display = "none";
+        }
+
+    }
+</script>
+}

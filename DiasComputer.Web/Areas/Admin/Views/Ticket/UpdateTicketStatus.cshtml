@@ -1,0 +1,67 @@
+﻿@model DiasComputer.DataLayer.Entities.SiteResources.Ticket
+@{
+    ViewData["Title"] = "بروزرسانی وضعیت تیکت";
+}
+
+<div class="margin-pages">
+    <h1>بروزرسانی جزئیات تماس با ما</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateTicketStatus" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TicketId" class="form-control"/>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketSenderName" class="control-label"></label>
+                        <input asp-for="TicketSenderName" class="form-control" readonly/>
+                        <span asp-validation-for="TicketSenderName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketSenderEmail" class="control-label"></label>
+                        <input asp-for="TicketSenderEmail" class="form-control" readonly/>
+                        <span asp-validation-for="TicketSenderEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketSenderIP" class="control-label"></label>
+                        <input asp-for="TicketSenderIP" class="form-control" readonly/>
+                        <span asp-validation-for="TicketSenderIP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketSenderPhone" class="control-label"></label>
+                        <input asp-for="TicketSenderPhone" class="form-control" readonly/>
+                        <span asp-validation-for="TicketSenderPhone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketSubject" class="control-label"></label>
+                        <input asp-for="TicketSubject" class="form-control" readonly/>
+                        <span asp-validation-for="TicketSubject" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="TicketDescription" class="control-label"></label>
+                        <input asp-for="TicketDescription" class="form-control" readonly/>
+                        <span asp-validation-for="TicketDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsTicketRead" class="control-label"></label><br/>
+                        <input asp-for="IsTicketRead"/>
+                        <span asp-validation-for="IsTicketRead" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsTicketAnswered" class="control-label"></label><br/>
+                        <input asp-for="IsTicketAnswered"/>
+                        <span asp-validation-for="IsTicketAnswered" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="بروزرسانی وضعیت" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="Index">انصراف</a>
+    </div>
+</div>

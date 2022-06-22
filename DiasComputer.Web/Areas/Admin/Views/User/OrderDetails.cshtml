@@ -1,0 +1,65 @@
+﻿@model List<DiasComputer.Core.DTOs.Orders.OrderDetailsViewModel>
+@{
+    ViewData["Title"] = "جزئیات سفارش";
+}
+
+<div class="margin-pages col-12">
+    <h1>سفارشات</h1>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <p>شماره سفارش</p>
+                </th>
+                <th>
+                    <p>نام محصول</p>
+                </th>
+                <th>
+                    <p>تصویر</p>
+                </th>
+                <th>
+                    <p>مبلغ</p>
+                </th>
+                <th>
+                    <p>رنگ</p>
+                </th>
+                <th>
+                    <p>تعداد</p>
+                </th>
+                <th>
+                    <p>جمع</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var detail in Model)
+            {
+                <tr>
+                    <td>
+                        <p>DC-@detail.OrderId</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => detail.ProductTitle)
+                    </td>
+                    <td>
+                        <img src="/images/productThumbnailImages/@detail.ProductImage" class="img-thumbnail" />
+                    </td>
+                    <td>
+                        <p>@detail.ProductPrice.ToString("#,0") تومان</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => detail.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => detail.Count)
+                    </td>
+                    <td>
+                        <p>@detail.ProductPriceSum.ToString("#,0") تومان</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-sm btn-outline-secondary" asp-action="UserOrders" asp-route-userId="@ViewBag.UserId" >بازگشت به سفارشات</a>
+</div>
+

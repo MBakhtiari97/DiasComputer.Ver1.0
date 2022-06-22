@@ -1,0 +1,123 @@
+﻿@using DiasComputer.Utility.Convertors
+@using System.Security.Claims
+@using DiasComputer.Core.Services.Interfaces
+@model Tuple<List<DiasComputer.DataLayer.Entities.Products.Review>, int>
+@inject IUserRepository _UserRepository
+@{
+    Layout = null;
+
+    bool isAdmin = false;
+    if (User.Identity.IsAuthenticated)
+    {
+        isAdmin = _UserRepository.IsUserAdmin(int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier.ToString())));
+    }
+}
+
+<ol class="comment-list">
+    @foreach (var comment in Model.Item1.Where(r => r.ParentId == null))
+    {
+        <li>
+            <div class="comment-body">
+                <div class="comment-author">
+                    <img alt="User Avatar" src="/images/userAvatars/@comment.User.UserAvatar" class="avatar"><cite class="fn">@comment.User.UserName</cite>
+                    <span class="says">گفت:</span>
+                </div>
+
+                <div class="commentmetadata">
+                    @comment.ReviewDate.ToShamsi()
+                    <a onclick="ReplyComment(@comment.ReviewId),elevator()" class="btn btn-sm btnInReview">پاسخ</a>
+                    <a href="/ReportComment/@comment.ProductId/@comment.ReviewId" class="btn btn-sm btnInReview">گزارش</a>
+                    @if (isAdmin == true)
+                    {
+                        <a href="/RemoveComment/@comment.ProductId/@comment.ReviewId" class="btn btn-sm btnInReview">حذف</a>
+                    }
+                </div>
+                <p>
+                    @comment.ReviewText
+                </p>
+            @if (Model.Item1.Any(r => r.ParentId == comment.ReviewId))
+            {
+                <p>
+                    <a class="btnShowAnswer">
+                        <i class="fa fa-reply-all"></i><span>&nbsp;مشاهده پاسخ ها</span>
+                    </a>
+                </p>
+                <section class="commentReplies">
+                    <ol class="children">
+                        @foreach (var subReview in Model.Item1.Where(r => r.ParentId == comment.ReviewId))
+                        {
+                            <li>
+                                <div class="comment-body">
+                                    <div class="comment-author">
+                                        <img alt="" src="/images/userAvatars/@subReview.User.UserAvatar" class="avatar"><cite class="fn">@subReview.User.UserName</cite> <span class="says">گفت:</span>
+                                    </div>
+                                    <div class="commentmetadata">
+                                        @subReview.ReviewDate.ToShamsi()
+                                        <a href="/ReportComment/@subReview.ProductId/@subReview.ReviewId" class="btn btn-sm btnInReview">گزارش</a>
+                                        @if (isAdmin == true)
+                                        {
+                                            <a href="/RemoveComment/@subReview.ProductId/@subReview.ReviewId" class="btn btn-sm btnInReview">حذف</a>
+                                        }
+                                    </div>
+                                    <p>
+                                        @subReview.ReviewText
+                                    </p>
+                                </div>
+                                <!-- .children -->
+                            </li>
+                        }
+                    </ol>
+
+                    <p>
+                        <a class="btnHideAnswer">
+                            <i class="fa fa-close"></i><span>&nbsp;بستن پاسخ ها</span>
+                        </a>
+                    </p>
+
+                </section>
+            }
+            </div>
+        </li>
+    }
+</ol>
+<!-- .children -->
+
+
+<div class="pager default text-center">
+    <ul class="pager-items">
+        @{
+            int currentPage = ViewBag.PageId;
+        }
+        @for (int i = 1; i <= Model.Item2; i++)
+        {
+            <li>
+                <a class="pager-item @((i == currentPage) ? "is-active" : "")" onclick="pageComment(@i)">@i</a>
+            </li>
+        }
+    </ul>
+</div>
+
+
+<script>
+
+    function ReplyComment(parentId) {
+        var inputParentId = document.getElementById("parentId");
+        inputParentId.value = parentId;
+    }
+
+    function elevator() {
+
+        $('html, body').animate({
+            scrollTop: $("#commentText").offset().top
+        }, 2000);
+    }
+
+    $(".btnShowAnswer").click(function() {
+        $(".commentReplies").fadeIn("slow");
+    });
+
+
+    $(".btnHideAnswer").click(function() {
+        $(".commentReplies").fadeOut("slow");
+    });
+</script>

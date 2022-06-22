@@ -1,0 +1,11 @@
+﻿@model List<DiasComputer.DataLayer.Entities.SiteResources.Banner>
+@foreach (var banner in Model)
+{
+    <div class="col-12 col-lg-6">
+        <div class="widget-banner card">
+            <a href="@banner.BannerRedirectTo" target="_blank">
+                <img class="img-fluid" src="/images/banner/@banner.BannerImg" alt="@banner.BannerAltName">
+            </a>
+        </div>
+    </div>
+}

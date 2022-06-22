@@ -1,0 +1,36 @@
+﻿@using DiasComputer.DataLayer.Entities.SiteResources
+@model List<DiasComputer.DataLayer.Entities.SiteResources.Slider>
+<section id="main-slider" class="carousel slide carousel-fade card" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#main-slider" data-slide-to="1" class=""></li>
+        <li data-target="#main-slider" data-slide-to="2" class=""></li>
+        <li data-target="#main-slider" data-slide-to="3" class=""></li>
+    </ol>
+
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        if (i == 0)
+        {
+            <div class="carousel-item active">
+                <a class="d-block" href="@Model[i].SlideRedirectTo">
+                    <img src="/images/slider/@Model[i].SlideImg" class="d-block w-100" alt="@Model[i].SlideAltName">
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="carousel-item">
+                <a class="d-block" href="@Model[i].SlideRedirectTo">
+                    <img src="/images/slider/@Model[i].SlideImg" class="d-block w-100" alt="@Model[i].SlideAltName">
+                </a>
+            </div>
+        }
+    }
+    <a class="carousel-control-prev" href="#main-slider" role="button" data-slide="prev">
+        <i class="now-ui-icons arrows-1_minimal-right"></i>
+    </a>
+    <a class="carousel-control-next" href="#main-slider" data-slide="next">
+        <i class="now-ui-icons arrows-1_minimal-left"></i>
+    </a>
+</section>

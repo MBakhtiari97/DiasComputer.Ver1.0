@@ -1,0 +1,17 @@
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\DiasComputer.Utility.deps.json
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\DiasComputer.Utility.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.csproj.AssemblyReference.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.GeneratedMSBuildEditorConfig.editorconfig
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.AssemblyInfoInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.AssemblyInfo.cs
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.csproj.CoreCompileInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\refint\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\ref\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\Microsoft.AspNetCore.Mvc.TagHelpers.xml
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Release\net6.0\Microsoft.Extensions.FileSystemGlobbing.xml
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Release\net6.0\DiasComputer.Utility.csproj.CopyComplete

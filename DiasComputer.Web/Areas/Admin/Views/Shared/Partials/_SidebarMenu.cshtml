@@ -1,0 +1,311 @@
+﻿<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+    <li class="nav-item has-treeview menu-open">
+        <a href="/" class="nav-link active">
+            <i class="nav-icon fa fa-dashboard"></i>
+            <p>
+                صفحه اصلی سایت
+            </p>
+        </a>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-users"></i>
+            <p>
+                کاربران
+                <i class="right fa fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/User" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه کاربران</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/User/Create" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>افزودن کاربر جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-sort"></i>
+            <p>
+                دسته بندی محصولات
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Category/" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه دسته بندی ها</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Category/AddCategory" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>دسته بندی جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-square"></i>
+            <p>
+                محصولات
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Products" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه محصولات</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Products/Create" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>محصول جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-shopping-cart"></i>
+            <p>
+                سفارشات
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Order/UnProcess" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>سفارشات در انتظار تایید</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Order/OrdersHistory" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه سفارشات</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-reply-all"></i>
+            <p>
+                نظرات
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Review/AwaitingReviews" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>نظرات تایید نشده</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Review/ReportedComments" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>نظرات گزارش شده</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-user-secret"></i>
+            <p>
+                نقش کاربران
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Role/Index" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه نقش ها</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Role/CreateRole" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>نقش جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-ticket"></i>
+            <p>
+                تیکت ها
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Ticket/Index" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه تیکت ها</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-percent"></i>
+            <p>
+                کد های تخفیف
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Coupon/CouponsIndex" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه کد های تخفیف</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Coupon/CreateCoupon" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>کد تخفیف جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-envelope-o"></i>
+            <p>
+                ایمیل ها
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/ManageEmail/SendPrivateEmail" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>ارسال ایمیل شخصی</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/ManageEmail/SendPublicEmail" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>ارسال ایمیل عمومی</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/ManageEmail/SendAdminsEmail" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>ارسال ایمیل ادمین</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/ManageEmail/SentEmailsHistory" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>سوابق ایمیل های ارسالی</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-paper-plane"></i>
+            <p>
+                اطلاعات تماس با ما
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/ContactUs/Index" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>تمام اطلاعات</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/ContactUs/AddNewDetail" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>ایجاد اطلاعات جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-border"></i>
+            <p>
+                بنرها
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Banner/BannersIndex" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>تمام بنر ها</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-sliders"></i>
+            <p>
+                اسلایدر
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Slider/Index" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>تمام اسلاید ها</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Slider/AddNewSlide" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>اسلاید جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-amazon"></i>
+            <p>
+                برند ها
+                <i class="fa fa-angle-left right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/Admin/Brands" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>تمام برند ها</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Brands/New" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>برند جدید</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

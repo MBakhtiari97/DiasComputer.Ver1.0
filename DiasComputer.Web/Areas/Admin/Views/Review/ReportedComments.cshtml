@@ -1,0 +1,124 @@
+﻿@using DiasComputer.Utility.Convertors
+@model Tuple<List<DiasComputer.Core.DTOs.Admin.AdminReviewsViewModel>,int>
+@{
+    ViewData["Title"] = "نظرات گزارش شده";
+}
+
+<div class="margin-pages">
+    <h1>لیست گزارش شده</h1>
+
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().EmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ReviewDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.First().ReviewText)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        <p>@item.ReviewDate.ToShamsi()</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReviewText)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-info" asp-action="UnReportComment" asp-route-reviewId="@item.ReviewId">بازنگری شده</a>
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.ReviewId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف کامنت</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این کامنت اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="RemoveComment" method="get">
+                        <input id="reviewId" type="hidden" name="reviewId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="ReportedComments" asp-controller="Review" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId)
+    {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+    function SendID(reviewId) {
+        var reviewIdValue = document.getElementById("reviewId");
+        reviewIdValue.value = reviewId;
+    }
+</script>
+
+<!--EndPaging-->

@@ -1,0 +1,66 @@
+﻿@model DiasComputer.Core.DTOs.Admin.BannersViewModel
+@{
+    ViewData["Title"] = "بروزرسانی بنر";
+}
+
+<div class="margin-pages">
+    <h1>بروزرسانی بنر</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="UpdateBanner" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="BannerId" class="form-control"/>
+                <input type="hidden" asp-for="BannerImg" class="form-control"/>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="BannerSize" class="control-label"></label>
+                        <input asp-for="BannerSize" class="form-control" readonly/>
+                        <span asp-validation-for="BannerSize" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="BannerPosition" class="control-label"></label>
+                        <input asp-for="BannerPosition" class="form-control" readonly/>
+                        <span asp-validation-for="BannerPosition" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="BannerAltName" class="control-label"></label>
+                        <input asp-for="BannerAltName" class="form-control"/>
+                        <span asp-validation-for="BannerAltName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="BannerRedirectTo" class="control-label"></label>
+                        <input asp-for="BannerRedirectTo" class="form-control" id="redirectTo"/>
+                        <span asp-validation-for="BannerRedirectTo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">بنر جدید</label>
+                        <input type="file" asp-for="NewBannerImg" class="form-control"/>
+                        <span asp-validation-for="NewBannerImg" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsActive" class="control-label"></label><br/>
+                        <input asp-for="IsActive"/>
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="ویرایش بنر" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="BannersIndex">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,299 @@
+﻿@inject IConfiguration _configuration;
+@model Tuple<List<DiasComputer.Core.DTOs.Product.SingleProductInListViewModel>,int,int>
+@{
+    ViewData["Title"] = "محصولات";
+}
+@section Metas
+{
+    <meta name="description" content="لیست محصولات فروشگاه دیاس کامپیوتر" />
+    <meta property="og:title" content="لیست محصولات" />
+    <meta property="og:description" content="لیست محصولات فروشگاه دیاس کامپیوتر" />
+    <meta property="og:url" content="@_configuration["Address"]products/" />
+}
+
+<main class="search-page amazing-search default">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="header-amazing-search"></div>
+            </div>
+            <aside class="sidebar-page col-12 col-sm-12 col-md-4 col-lg-3 order-1">
+                <form action="/Products" method="get" id="formFilter">
+                    <input type="hidden" name="pageId" value="@ViewBag.PageId" />
+                    <input type="hidden" name="groupId" value="@ViewBag.Groups" />
+                    <input type="hidden" name="amazingProducts" value="0" id="amazingProduct" />
+                    <input type="hidden" name="getType" value="1" id="getType" />
+                    <input type="hidden" name="orderByType" value="newest" id="sortProductsBy" />
+                    <div class="sidebar-title-amazing">
+                        <img src="assets/img/svg/9284f8d1.svg" alt="">
+                    </div>
+                    <div class="box">
+                        <div class="box-header">جستجو در نتایج:</div>
+                        <div class="box-content">
+                            <div class="ui-input ui-input--quick-search">
+                                <input type="text" class="ui-input-field ui-input-field--cleanable" name="searchPhrase" placeholder="نام محصول یا برند مورد نظر را بنویسید…" @(ViewBag.Phrase!=""?$"value={ViewBag.Phrase}":"")>
+                                <span class="ui-input-cleaner"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @* <div class="box">
+                        <div class="box-header">
+                        <div class="box-toggle" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="true" aria-controls="collapseExample1">
+                        دسته بندی نتایج
+                        <i class="now-ui-icons arrows-1_minimal-down"></i>
+                        </div>
+                        </div>
+                        <div class="box-content">
+                        <div class="collapse show" id="collapseExample1">
+                        <div class="ui-input ui-input--quick-search">
+                        <input type="text" class="ui-input-field ui-input-field--cleanable" placeholder="نام دسته بندی مورد نظر را بنویسید…">
+                        <span class="ui-input-cleaner"></span>
+                        </div>
+                        <div class="filter-option">
+                        <div class="checkbox">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">
+                        ریمکس
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox2" type="checkbox">
+                        <label for="checkbox2">
+                        باسئوس
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox3" type="checkbox">
+                        <label for="checkbox3">
+                        اپل
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox4" type="checkbox">
+                        <label for="checkbox4">
+                        نیلکین
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox5" type="checkbox">
+                        <label for="checkbox5">
+                        راک
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox6" type="checkbox">
+                        <label for="checkbox6">
+                        توتو
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox7" type="checkbox">
+                        <label for="checkbox7">
+                        فراری
+                        </label>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="box">
+                        <div class="box-header">
+                        <div class="box-toggle" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="true" aria-controls="collapseExample2">
+                        برند
+                        <i class="now-ui-icons arrows-1_minimal-down"></i>
+                        </div>
+                        </div>
+                        <div class="box-content">
+                        <div class="collapse show" id="collapseExample2">
+                        <div class="ui-input ui-input--quick-search">
+                        <input type="text" class="ui-input-field ui-input-field--cleanable" placeholder="نام برند مورد نظر را بنویسید…">
+                        <span class="ui-input-cleaner"></span>
+                        </div>
+                        <div class="filter-option">
+                        <div class="checkbox">
+                        <input id="checkbox8" type="checkbox">
+                        <label for="checkbox8">
+                        ریمکس
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox9" type="checkbox">
+                        <label for="checkbox9">
+                        باسئوس
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox10" type="checkbox">
+                        <label for="checkbox10">
+                        اپل
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox11" type="checkbox">
+                        <label for="checkbox11">
+                        نیلکین
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox12" type="checkbox">
+                        <label for="checkbox12">
+                        راک
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox13" type="checkbox">
+                        <label for="checkbox13">
+                        توتو
+                        </label>
+                        </div>
+                        <div class="checkbox">
+                        <input id="checkbox14" type="checkbox">
+                        <label for="checkbox14">
+                        فراری
+                        </label>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>*@
+                    <div class="box">
+                        <div class="box-content">
+                            <div class="box-header">فیلتر بر اساس وضعیت کالا</div>
+                            <div class="box-content-items">
+                                فقط کالا های موجود :<input type="checkbox" id="typeChecker" onchange="CheckType()" class="bootstrap-switch" @(ViewBag.Type==1?"checked":"")><br />
+                                نمایش کالا های تخفیف دار :<input type="checkbox" id="amazingChecker" onchange="CheckAmazing()" class="bootstrap-switch" @(ViewBag.OnlyAmazing==1?"checked":"")>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-content">
+                            <div class="box-header">فیلتر بر اساس قیمت کالا</div>
+                            <div class="box-content-items text-center">
+                                <input type="text" class="form-control text-center" id="minPrc" disabled @(ViewBag.MinPrice!=0?$"value={(ViewBag.MinPrice).ToString("#,0")}":"value=0 تومان")> <input type="range" class="form-control" min="0" max="150000000" oninput="ChangeMinPrice(this.value)" name="minPrice" id="minPrice" @(ViewBag.MinPrice!=0?$"value={ViewBag.MinPrice}":"value=0")>
+                                <input type="text" class="form-control text-center" id="maxPrc" disabled @(ViewBag.MaxPrice!=0?$"value={(ViewBag.MaxPrice).ToString("#,0")}":"value=150000000 تومان")> <input type="range" class="form-control" oninput="ChangeMaxPrice(this.value)" min="0" max="150000000" name="maxPrice" id="maxPrice" @(ViewBag.MaxPrice!=0?$"value={ViewBag.MaxPrice}":"value=150000000")>
+
+                                <button type="submit" class="btn btn-success">
+                                    اعمال فیلترها
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </aside>
+            <div class="amazing-content col-12 col-sm-12 col-md-8 col-lg-9 order-2">
+                <div class="breadcrumb-section default">
+                    <ul class="breadcrumb-list">
+                        <li>
+                            <a href="#">
+                                <span>فروشگاه اینترنتی دیاس کامپیوتر</span>
+                            </a>
+                        </li>
+                        @if (ViewBag.GroupName!=null)
+                        {
+                            <li><span>@ViewBag.GroupName</span></li>
+                        }
+                        
+                    </ul>
+                </div>
+                <div class="listing default">
+                    <div class="listing-counter">@Model.Item3 کالا</div>
+                    <div class="listing-header default">
+                        <ul class="listing-sort nav nav-tabs justify-content-center" role="tablist" data-label="مرتب‌سازی بر اساس :">
+                            <li>
+                                <a data-toggle="tab" href="#new" role="tab" aria-expanded="true" onclick="SetSortBy('newest')">جدیدترین</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#down-price" role="tab" aria-expanded="false" onclick="SetSortBy('priceUp')">ارزان‌ترین</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#top-price" role="tab" aria-expanded="false" onclick="SetSortBy('priceDown')">گران‌ترین</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content default text-center">
+                        <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
+                            <div class="container no-padding-right">
+                                <ul class="row listing-items">
+                                    @foreach (var product in Model.Item1)
+                                    {
+                                        <partial name="_SingleProduct" model="product" />
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.Item2 > 1)
+                    {
+                        <div class="pager default text-center">
+                            <ul class="pager-items">
+                                @{
+                                    int currentPage = ViewBag.pageId;
+                                }
+                                @for (int i = 1; i <= Model.Item2; i++)
+                                {
+                                    <li>
+                                        <a class="pager-item @((i == currentPage) ? "is-active" : "")" href="/Products?pageId=@i">@i</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts
+{
+<script>
+    function ChangeMinPrice(price) {
+        var minPrice = document.getElementById("minPrc");
+        minPrice.value = commafy(price) + " تومان ";
+    }
+
+    function ChangeMaxPrice(price) {
+        var maxPrice = document.getElementById("maxPrc");
+        maxPrice.value = commafy(price) + " تومان ";
+    }
+
+    function commafy(num) {
+        var str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
+    }
+
+    function CheckAmazing() {
+        var elementAmazing = document.getElementById("amazingChecker");
+        var amazingInput = document.getElementById("amazingProduct");
+
+        if (elementAmazing.checked === true) {
+            amazingInput.value = 1;
+        } else {
+            amazingInput.value = 0;
+        }
+    }
+
+    function CheckType() {
+        var elementType = document.getElementById("typeChecker");
+        var typeInput = document.getElementById("getType");
+
+        if (elementType.checked === true) {
+            typeInput.value = 1;
+        } else {
+            typeInput.value = 0;
+        }
+    }
+
+    function SetSortBy(value) {
+        var inputSort = document.getElementById("sortProductsBy");
+        inputSort.value = value;
+    }
+</script>
+}
+

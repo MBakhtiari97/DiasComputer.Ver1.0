@@ -1,0 +1,81 @@
+﻿@using DiasComputer.Utility.Convertors
+@model DiasComputer.DataLayer.Entities.Orders.TransactionHistory
+@{
+    ViewData["Title"] = "فاکتور این سفارش";
+}
+
+@if (Model != null)
+{
+    <div class="margin-pages col-12">
+    <h1>سفارشات</h1>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <p>شماره سفارش</p>
+                </th>
+                <th>
+                    <p>مبلغ فاکتور</p>
+                </th>
+                <th>
+                    <p>تاریخ انجام تراکنش</p>
+                </th>
+                <th>
+                    <p>شرح</p>
+                </th>
+                <th>
+                    <p>نوع پرداخت</p>
+                </th>
+                <th>
+                    <p>کد پیگیری</p>
+                </th>
+                <th>
+                    <p>تایید شده</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a asp-action="OrderDetails" asp-route-orderId="@Model.OrderId" asp-route-userId="@Model.UserId">
+                        <p>DC-@Model.OrderId</p>
+                    </a>
+                </td>
+                <td class="text-success">
+                    @Html.DisplayFor(modelItem => Model.Amount)
+                </td>
+                <td>
+                    <p>@Model.Date.ToShamsi()</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.PaymentMethod)
+                </td>
+                <td class="text-info">
+                    @Html.DisplayFor(modelItem => Model.TrackingCode)
+                </td>
+                <td>
+                    @switch (Model.IsApproved)
+                    {
+                        case true:
+                            <p class="text-success">تایید شده</p>
+                            break;
+                        case false:
+                            <p class="text-danger">در انتظار تایید</p>
+                            break;
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-sm btn-outline-secondary" asp-action="UserOrders" asp-route-userId="@Model.UserId">بازگشت به سفارشات</a>
+</div>
+}
+else
+{
+    <div class="margin-pages col-12 text-center">
+        <h2>فاکتور این سفارش یافت نشد</h2>
+    </div>
+}

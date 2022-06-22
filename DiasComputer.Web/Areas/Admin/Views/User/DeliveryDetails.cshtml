@@ -1,0 +1,70 @@
+﻿@model DiasComputer.DataLayer.Entities.Users.PostDetail
+@{
+    ViewData["Title"] = "اطلاعات پستی";
+}
+@if (Model == null)
+{
+    <div class="margin-pages col-12 text-center">
+        <h3>جزئیاتی برای این کاربر در دسترس نیست</h3>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+else
+{
+    <div class="margin-pages col-12">
+        <h1>اطلاعات پستی</h1>
+        <table class="table table-responsive-lg col-12">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NationalCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem =>Model.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.NationalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ZipCode)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="DeleteDeliveryDetails" asp-controller="User" asp-route-pdId="@Model.PD_Id">حذف اطلاعات</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+

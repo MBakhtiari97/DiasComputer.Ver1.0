@@ -1,0 +1,12 @@
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Debug\net6.0\DiasComputer.Utility.deps.json
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Debug\net6.0\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\bin\Debug\net6.0\DiasComputer.Utility.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.csproj.AssemblyReference.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.GeneratedMSBuildEditorConfig.editorconfig
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.AssemblyInfoInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.AssemblyInfo.cs
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.csproj.CoreCompileInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\refint\DiasComputer.Utility.dll
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\DiasComputer.Utility.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.Utility\obj\Debug\net6.0\ref\DiasComputer.Utility.dll

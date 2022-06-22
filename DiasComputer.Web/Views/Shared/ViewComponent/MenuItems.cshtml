@@ -1,0 +1,27 @@
+﻿@model List<DiasComputer.DataLayer.Entities.Groups.Group>
+<ul class="list float-right">
+    @foreach (var group in @Model.Where(g => g.ParentId == null))
+    {
+        <li class="list-item list-item-has-children mega-menu mega-menu-col-5">
+            <a class="nav-link" href=/Products?groupId=@group.GroupId>@group.GroupTitle</a>
+            <ul class="sub-menu nav">
+                <li class="list-item list-item-has-children">
+                    <ul class="sub-menu nav">
+                        @if (Model.Any(g => g.ParentId == group.GroupId))
+                        {
+                            @foreach (var subGroup in Model.Where(g => g.ParentId == group.GroupId))
+                            {
+                                <li class="list-item">
+                                    <a class="nav-link" href="/Products?groupId=@subGroup.GroupId">@subGroup.GroupTitle</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    }
+    <li class="list-item amazing-item">
+        <a class="nav-link" href="/Products?amazingProducts=1" target="_blank">شگفت‌انگیزها</a>
+    </li>
+</ul>

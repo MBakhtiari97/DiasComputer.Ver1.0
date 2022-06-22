@@ -1,0 +1,122 @@
+﻿@using DiasComputer.Utility.Convertors
+@model Tuple<List<DiasComputer.Core.DTOs.Orders.OrdersWaitingForActionViewModel>,int>
+@{
+    ViewData["Title"] = "سفارشات";
+}
+
+<div class="margin-pages">
+    <h1>تمام سفارشات</h1>
+    <p>
+        <form method="get" asp-action="OrdersHistory">
+            <label>فیلتر کردن :</label>
+            <br />
+            <div class="col col-md-12">
+                <div class="row">
+                    <div class="col col-md-5">
+                        <input name="orderId" type="number" class="form-control" placeholder="شماره سفارش" value="@((ViewBag.OrderId!=null)?ViewBag.OrderId:"")" />
+                    </div>
+                    <div class="col col-md-5">
+                        <select name="isFinally" class="form-control">
+                            <option value="">همه</option>
+                            <option value="true">فقط سفارشات نهایی شده</option>
+                        </select>
+                    </div>
+                    <div class="col col-md-2">
+                        <input type="submit" value="فیلتر کن" class="btn btn-primary" />
+                        <a href="/Admin/Order/OrdersHistory" class="btn btn-primary">پاک کردن فیلترها</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().OrderSum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => Model.Item1.First().IsFinally)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td class="text-secondary">
+                    <a href="/Admin/Order/ProcessOrder?orderId=@item.OrderId&userId=@item.UserId">
+                        <p><b>DC-@item.OrderId</b></p>
+                    </a>
+                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td class="text-danger">
+                    <p><b>@item.OrderSum.ToString("#,0") تومان</b></p>
+                </td>
+                <td>
+                    <p>@item.OrderDate.ToShamsi()</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFinally)
+                </td>
+                @if (!item.IsFinally)
+                {
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="ProcessOrder" asp-route-orderId="@item.OrderId" asp-route-userId="@item.UserId">پردازش</a>
+                    </td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+
+    <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.Item2 > 1)
+                {
+                    @for (var i = 1; i <= Model.Item2; i++)
+                    {
+                        <li class="page-item"><a class="page-link @((i == @ViewBag.PageId) ? "active" : "")" onclick="changePageNo(@i)">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Paging-->
+<form asp-action="OrdersHistory" id="change">
+    <input type="hidden" value="1" name="pageId" id="pageNo" />
+</form>
+
+
+<script>
+    function changePageNo(pageId) {
+        $("#pageNo").val(pageId);
+        $("#change").submit();
+    }
+
+</script>
+
+<!--EndPaging-->

@@ -1,0 +1,9 @@
+﻿@model List<DiasComputer.DataLayer.Entities.SiteResources.Banner>
+@foreach (var banner in Model)
+{
+    <div class="widget-banner widget card">
+        <a href="@banner.BannerRedirectTo" target="_top">
+            <img class="img-fluid" src="/images/banner/@banner.BannerImg" alt="@banner.BannerAltName">
+        </a>
+    </div>
+}

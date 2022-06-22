@@ -1,0 +1,117 @@
+﻿@model DiasComputer.DataLayer.Entities.Users.PostDetail
+@{
+    ViewData["Title"] = "تکمیل اطلاعات";
+}
+
+<div class="wrapper default shopping-page">
+    <header class="header-shopping default">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="checkout-steps">
+                        <li>
+                            <a href="#" class="active">
+                                <span>اطلاعات ارسال</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <span>پرداخت</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <span>اتمام خرید و ارسال</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-12 col-md-8 mx-auto">
+                <div class="account-box checkout-page">
+                    <a href="#" class="logo">
+                        <img src="/main-resources/assets/img/Logo.png" alt="Logo">
+                    </a>
+                    <div class="account-box-content">
+                        <form class="form-account" asp-action="CheckOutDetailsForm">
+                            <input type="hidden" asp-for="UserId" value="@ViewBag.UserId"/>
+                            <input type="hidden" asp-for="PD_Id" />
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="checkout-title text-right">مشخصات شما</div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-account-title">
+                                        نام و نام خانوادگی
+                                    </div>
+                                    <div class="form-account-row">
+                                        <input class="input-field text-right" asp-for="UserName" type="text" placeholder="نام و نام خانوادگی خود را وارد نمایید">
+                                        <span asp-validation-for="User.UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-account-title">کد ملی</div>
+                                    <div class="form-account-row">
+                                        <input class="input-field" asp-for="NationalCode" type="text" placeholder="کد ملی خود را وارد نمایید">
+                                        <span asp-validation-for="User.NationalCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="checkout-title text-right"> اطلاعات پستی </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-account-title">آدرس پستی</div>
+                                    <div class="form-account-row">
+                                        <textarea class="input-field text-right" asp-for="Address" rows="5" placeholder=" آدرس پستی خود را وارد نمایید"></textarea>
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-account-title">شهر</div>
+                                    <div class="form-account-row">
+                                        <input class="input-field text-right" asp-for="City" type="text" placeholder=" شماره موبایل خود را وارد نمایید">
+                                        <span asp-validation-for="City" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-account-title">شماره موبایل</div>
+                                    <div class="form-account-row">
+                                        <input class="input-field" asp-for="PhoneNumber" type="text" placeholder=" شماره موبایل خود را وارد نمایید">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-account-title">کد پستی</div>
+                                    <div class="form-account-row">
+                                        <input class="input-field" asp-for="ZipCode" type="text" placeholder=" شماره موبایل خود را وارد نمایید">
+                                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mx-auto">
+                                <div class="form-account-row form-account-submit">
+                                    <div class="parent-btn">
+                                        <button class="dk-btn dk-btn-info">
+                                            ثبت و ارسال
+                                            <i class="fa fa-sign-in"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

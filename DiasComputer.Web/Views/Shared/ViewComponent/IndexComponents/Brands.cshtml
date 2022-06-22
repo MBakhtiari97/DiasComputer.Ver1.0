@@ -1,0 +1,22 @@
+﻿@model List<DiasComputer.DataLayer.Entities.SiteResources.Logo>
+<div class="brand-slider card">
+    <header class="card-header">
+        <h3 class="card-title"><span>برندهای ویژه</span></h3>
+    </header>
+    <div class="owl-carousel owl-rtl owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1457px;">
+                @foreach (var brand in Model)
+                {
+                    <div class="owl-item active" style="width: 281.4px; margin-left: 10px;">
+                        <div class="item">
+                            <a href="@brand.RedirectTo">
+                                <img src="/images/brand/@brand.LogoImg" alt="@brand.LogoTitle">
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><i class="now-ui-icons arrows-1_minimal-right"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="now-ui-icons arrows-1_minimal-left"></i></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div>
+    </div>
+</div>

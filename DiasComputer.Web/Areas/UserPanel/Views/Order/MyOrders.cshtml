@@ -1,0 +1,85 @@
+﻿@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.Core.DTOs.Orders.OrdersViewModel>
+@{
+    ViewData["Title"] = "سفارشات من";
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-12">
+                            <h1 class="title-tab-content">همه سفارش ها</h1>
+                        </div>
+                        <div class="content-section default">
+                            <div class="row text-center">
+                                @if (Model.Any())
+                                {
+                                    <table class="table table-bordered table-striped table-responsive-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>شماره سفارش</th>
+                                                <th>تاریخ سفارش</th>
+                                                <th>مبلغ کل سفارش</th>
+                                                <th>وضعیت پرداخت</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        DC-@item.OrderId
+                                                    </td>
+                                                    <td>@item.Date.ToShamsi()</td>
+                                                    <td>
+
+                                                        <p class="text-primary">
+                                                            <b>
+                                                                @item.OrderSum.ToString("#,0") تومان
+                                                            </b>
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        @if (@item.OrderStatus)
+                                                        {
+                                                            <p class="text-success">پرداخت موفق</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="text-danger">پرداخت ناموفق</p>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-primary" href="/MyProfile/Orders/ShowDetails/@item.OrderId">جزئیات این سفارش</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                                else
+                                {
+                                    <div class="col-12 text-center">
+                                        <div class="content-section pt-5 pb-5">
+                                            <div class="icon-empty">
+                                                <i class="now-ui-icons travel_info"></i>
+                                            </div>
+                                            <h1 class="text-empty">موردی برای نمایش وجود ندارد!</h1>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ProfileMenu")
+        </div>
+    </div>
+</main>
+

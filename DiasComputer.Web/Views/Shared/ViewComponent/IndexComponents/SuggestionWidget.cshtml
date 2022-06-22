@@ -1,0 +1,35 @@
+﻿@using DiasComputer.Utility.Compute
+@model List<DiasComputer.Core.DTOs.Product.AmazingProductsSliderViewModel>
+<div class="widget-suggestion widget card">
+    <header class="card-header">
+        <h3 class="card-title">پیشنهاد لحظه ای</h3>
+    </header>
+    <div id="progressBar">
+        <div class="slide-progress" style="width: 100%; transition: width 5000ms ease 0s;"></div>
+    </div>
+    <div id="suggestion-slider" class="owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(1574px, 0px, 0px); transition: all 0.25s ease 0s; width: 2518px;">
+                @foreach (var product in Model)
+                {
+                    <div class="owl-item" style="width: 314.75px;">
+                        <div class="item">
+                            <a href="/Products/@product.ProductId">
+                                <img src="/images/productThumbnailImages/@product.ProductImage" class="w-100" alt="@product.ProductTitle">
+                            </a>
+                            <h3 class="product-title">
+                                <a href="/Products/@product.ProductId">
+                                    <h5>@product.ProductTitle</h5>
+                                </a>
+                            </h3>
+                            <div class="price">
+                                <del><span class="amount">@product.ProductPrice.ToString("#,0")<span>تومان</span></span></del>
+                                <span class="amount">@Compute.ComputeSalePrice(product.ProductPrice,product.ProductSalePercent).ToString("#,0")<span>تومان</span></span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>@*<div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div>*@
+    </div>
+</div>

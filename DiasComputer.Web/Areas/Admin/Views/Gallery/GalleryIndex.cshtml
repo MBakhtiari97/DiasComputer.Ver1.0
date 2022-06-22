@@ -1,0 +1,82 @@
+﻿@model List<DiasComputer.DataLayer.Entities.Products.Gallery>
+@{
+    ViewData["Title"] = "گالری تصاویر";
+}
+
+<div class="margin-pages">
+    <h1>گالری تصاویر محصول</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="AddNewGalleryImage" asp-route-productId="@ViewBag.ProductId">تصویر جدید</a>
+    </p>
+    <table class="table table-responsive-lg col-12 table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ImgName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ImgAltName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        <img src="/images/productThumbnailsGalleries/@item.ImgName" alt="تصویر محصول" class="img-thumbnail admin-gallery-img-thumb" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImgAltName)
+                    </td>
+                    <td class="text-center marginButtons">
+                        <a class="btn btn-sm btn-outline-success" asp-action="UpdateGalleryImage" asp-route-galleryId="@item.GalleryId">بروزرسانی</a>&nbsp;|
+                        <a class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="SendID(@item.GalleryId,@ViewBag.ProductId)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 200px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">حذف تصویر</h5>
+                </div>
+                <div class="modal-body">
+                    آیا از حذف این تصویر اطمینان دارید ؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>&nbsp; | &nbsp;
+                    <form asp-action="DeleteGalleryImage" method="get">
+                        <input id="galleryId" type="hidden" name="galleryId" />
+                        <input id="productId" type="hidden" name="productId" />
+                        <button type="submit" class="btn btn-danger">تایید و حذف</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+</div>
+
+<script>
+    function SendID(galleryId,productId) {
+        var galleryIdValue = document.getElementById("galleryId");
+        var productIdValue = document.getElementById("productId");
+        galleryIdValue.value = galleryId;
+        productIdValue.value = productId;
+    }
+</script>

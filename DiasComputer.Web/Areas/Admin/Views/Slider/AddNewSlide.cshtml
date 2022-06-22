@@ -1,0 +1,69 @@
+﻿@model DiasComputer.Core.DTOs.Admin.SliderViewModel
+@{
+    ViewData["Title"] = "افزودن اسلاید";
+}
+
+<div class="margin-pages">
+    <h1>افزودن اسلاید جدید</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="AddNewSlide" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label asp-for="SlideAltName" class="control-label"></label>
+                        <input asp-for="SlideAltName" class="form-control"/>
+                        <span asp-validation-for="SlideAltName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-6">
+                        <label asp-for="SlideRedirectTo" class="control-label"></label>
+                        <input asp-for="SlideRedirectTo" class="form-control"/>
+                        <span asp-validation-for="SlideRedirectTo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="control-label">اسلاید جدید</label>
+                        <input type="file" asp-for="Slide" class="form-control" id="imgInput"/>
+                        <span asp-validation-for="Slide" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label>تصویر انتخاب شده</label><br/>
+                        <img id="selectedBanner" style="max-width: 90%" class="img-thumbnail"/>
+                    </div>
+                    <div class="form-group col-12">
+                        <input type="submit" value="افزودن اسلاید" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="Index">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#selectedBanner').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInput").change(function(){
+            readURL(this);
+        });
+    </script>
+}

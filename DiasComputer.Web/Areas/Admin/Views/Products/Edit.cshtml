@@ -1,0 +1,148 @@
+﻿@using DiasComputer.DataLayer.Entities.Groups
+@model DiasComputer.Core.DTOs.Product.ProductsForAdminViewModel
+@{
+    ViewData["Title"] = "ویرایش محصول";
+    List<Group> groups = ViewBag.Groups;
+}
+
+<div class="margin-pages">
+    <h1>ویرایش محصول</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId"/>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductName" class="control-label"></label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductEngName" class="control-label"></label>
+                        <input asp-for="ProductEngName" class="form-control" />
+                        <span asp-validation-for="ProductEngName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductPrice" class="control-label"></label>
+                        <input asp-for="ProductPrice" class="form-control" />
+                        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="AvailableStatus" class="control-label"></label>
+                        <br />
+                        <input asp-for="AvailableStatus" />
+                        <span asp-validation-for="AvailableStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="AvailableCount" class="control-label"></label>
+                        <input asp-for="AvailableCount" class="form-control" />
+                        <span asp-validation-for="AvailableCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsActive" class="control-label"></label>
+                        <br />
+                        <input asp-for="IsActive" />
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductBrand" class="control-label"></label>
+                        <input asp-for="ProductBrand" class="form-control" />
+                        <span asp-validation-for="ProductBrand" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="IsOnSale" class="control-label"></label>
+                        <br />
+                        <input asp-for="IsOnSale" />
+                        <span asp-validation-for="IsOnSale" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="SalePercent" class="control-label"></label>
+                        <input asp-for="SalePercent" class="form-control" />
+                        <span asp-validation-for="SalePercent" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductColors" class="control-label"></label>
+                        <input asp-for="ProductColors" class="form-control" />
+                        <span asp-validation-for="ProductColors" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label asp-for="ShortDescription" class="control-label"></label>
+                        <input asp-for="ShortDescription" class="form-control" />
+                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label asp-for="FullDescription" class="control-label"></label>
+                        <textarea asp-for="FullDescription" class="form-control"></textarea>
+                        <span asp-validation-for="FullDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="Tags" class="control-label"></label>
+                        <input asp-for="Tags" class="form-control" />
+                        <span asp-validation-for="Tags" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductNewImage" class="control-label"></label>
+                        <input asp-for="ProductNewImage" class="form-control" type="file" />
+                        <span asp-validation-for="ProductNewImage" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="GroupId" class="control-label"></label>
+                        <select asp-for="GroupId">
+                            <option value="0">گروه اصلی را انتخاب کنید ...</option>
+                            @foreach (var group in groups.Where(g => g.ParentId == null))
+                            {
+                                <option value="@group.GroupId" >@group.GroupTitle</option>
+                            }
+                        </select>
+                        <span asp-validation-for="GroupId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="SubGroupId" class="control-label"></label>
+
+                        <select asp-for="SubGroupId">
+
+                            <option value="0">زیرگروه را انتخاب کنید ...</option>
+                            @foreach (var subGroup in groups.Where(g => g.ParentId != null))
+                            {
+                                <option value="@subGroup.GroupId">@subGroup.GroupTitle</option>
+                            }
+                        </select>
+                        <span asp-validation-for="GroupId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="بروزرسانی محصول" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="Index">انصراف</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'FullDescription', {
+        contentsLangDirection: 'rtl'
+    } );
+</script>
+}
+

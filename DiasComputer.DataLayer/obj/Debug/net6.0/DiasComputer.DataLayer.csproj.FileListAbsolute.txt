@@ -1,0 +1,14 @@
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\bin\Debug\net6.0\DiasComputer.DataLayer.deps.json
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\bin\Debug\net6.0\DiasComputer.DataLayer.runtimeconfig.json
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\bin\Debug\net6.0\DiasComputer.DataLayer.dll
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\bin\Debug\net6.0\DiasComputer.DataLayer.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.csproj.AssemblyReference.cache
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.AssemblyInfoInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.AssemblyInfo.cs
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.csproj.CoreCompileInputs.cache
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.dll
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\refint\DiasComputer.DataLayer.dll
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.pdb
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\DiasComputer.DataLayer.genruntimeconfig.cache
+G:\DiasComputer\DiasComputer\DiasComputer.DataLayer\obj\Debug\net6.0\ref\DiasComputer.DataLayer.dll

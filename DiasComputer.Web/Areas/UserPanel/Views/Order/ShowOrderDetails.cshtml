@@ -1,0 +1,96 @@
+﻿@model List<DiasComputer.Core.DTOs.Orders.OrderDetailsViewModel>
+@{
+    ViewData["Title"] = "جزئیات سفارش";
+}
+
+<main b-xs1jfuw0d8="" class="main default">
+    <main class="profile-user-page default">
+        <div class="container">
+            <div class="row">
+                <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-12">
+                                <h1 class="title-tab-content">جزئیات سفارش</h1>
+                            </div>
+                            <div class="content-section default">
+                                <div class="row">
+                                    @if (!Model.Any())
+                                    {
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="profile-recent-fav-row text-center">
+                                                <h2>موردی جهت نمایش یافت نشد !</h2>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="profile-recent-fav-row text-center">
+                                                <table class="table table-responsive-lg table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="12">شماره سفارش : <span class="text-danger">DC-@Model.First().OrderId</span></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>تصویر محصول</th>
+                                                            <th>عنوان محصول</th>
+                                                            <th>قیمت واحد</th>
+                                                            <th>تعداد</th>
+                                                            <th>رنگ</th>
+                                                            <th>گارانتی</th>
+                                                            <th>مجموع</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="/Products/@item.ProductId">
+                                                                        <img src="/images/productThumbnailImages/@item.ProductImage" class="img-thumbnail" style="max-width: 100px;" />
+                                                                    </a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="/Products/@item.ProductId">
+                                                                        @item.ProductTitle
+                                                                    </a>
+                                                                </td>
+                                                                <td>@item.ProductPrice.ToString("#,0") تومان</td>
+                                                                <td>@item.Count</td>
+                                                                <td>@item.Color</td>
+                                                                <td>@item.Warranty</td>
+                                                                <td>
+                                                                    <b>
+                                                                        <p class="text-success">@item.ProductPriceSum.ToString("#,0") تومان</p>
+                                                                    </b>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="12">
+                                                                <b>
+                                                                    مجموع فاکتور : <span class="text-primary"> @Model.Sum(t => t.ProductPriceSum).ToString("#,0") تومان</span>
+                                                                </b>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                            <div class="text-left">
+                                                <a class="btn btn-success" href="/MyProfile/Orders">بازگشت به سفارشات</a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @await Component.InvokeAsync("ProfileMenu")
+            </div>
+        </div>
+    </main>
+</main>

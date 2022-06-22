@@ -1,0 +1,44 @@
+﻿@model List<DiasComputer.Core.DTOs.Product.LatestProductsSliderViewModel>
+<div class="widget widget-product card">
+    <header class="card-header">
+        <h3 class="card-title">
+            <span>کامپیوتر و قطعات</span>
+        </h3>
+        <a href="#" class="view-all">مشاهده همه</a>
+    </header>
+    <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1891px;">
+                @foreach (var product in Model)
+                {
+                    <div class="owl-item active" style="width: 260.063px; margin-left: 10px;">
+                        <div class="item">
+                            <a href="#">
+                                <img src="/images/productImages/@product.ProductImage" class="img-fluid" alt="">
+                            </a>
+                            <h2 class="post-title">
+                                <a href="#">@product.ProductTitle</a>
+                            </h2>
+                            <div class="price">
+                                <div class="text-center">
+                                    <del><span>@product.ProductPrice.ToString("#,0")<span>تومان</span></span></del>
+                                </div>
+                                @if (product.IsOnSale)
+                                {
+                                    var price = (decimal)product.ProductPrice;
+                                    var sale = (decimal)product.ProductSalePercent / 100;
+                                    var priceAfterSale = price - (price * sale);
+                                    priceAfterSale = Math.Floor(priceAfterSale);
+
+                                    <div class="text-center">
+                                        <ins><span>@priceAfterSale.ToString("#,0")<span>تومان</span></span></ins>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="now-ui-icons arrows-1_minimal-right"></i></button><button type="button" role="presentation" class="owl-next"><i class="now-ui-icons arrows-1_minimal-left"></i></button></div><div class="owl-dots disabled"></div>
+    </div>
+</div>

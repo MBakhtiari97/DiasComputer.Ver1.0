@@ -1,0 +1,168 @@
+﻿@using DiasComputer.Core.DTOs.Orders
+@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.Core.DTOs.Orders.OrderDetailsViewModel>
+@{
+    ViewData["Title"] = "چاپ فاکتور";
+    UserDetailsForProcessOrderViewModel deliveryDetails = @ViewBag.DeliveryDetails;
+    InvoicePaymentDetails payment = @ViewBag.PaymentDetails;
+}
+
+<div class="margin-pages">
+    <div class="col col-12">
+        <a onclick="Print()" class="btn btn-outline-secondary">چاپ فاکتور</a>
+        <div class="row">
+            <div class="col-12 text-center container invoiceHeader">
+                <h2>فروشگاه اینترنتی دیاس کامپیوتر</h2>
+            </div>
+            <div class="col-12 text-center userInvoiceDetails">
+                <h4>مشخصات خریدار</h4><br/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span>نام و نام خانوادگی : @deliveryDetails.UserName</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>آدرس ایمیل : @deliveryDetails.EmailAddress</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>تلفن تماس : @deliveryDetails.PhoneNumber</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>شهر محل سکونت : @deliveryDetails.City</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>کد پستی : @deliveryDetails.ZipCode</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <span>آدرس پستی : @deliveryDetails.Address</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-12">
+        <div class="row">
+            <div class="col-12 text-center userInvoiceDetails">
+                <h4>فاکتور خرید</h4><br />
+                <table class="table table-responsive-lg col-12 table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().OrderId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().ProductTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().ProductPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().Count)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().Color)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().Warranty)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(modelItem => Model.First().ProductPriceSum)
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-secondary">
+                                <p><b>DC-@item.OrderId</b></p>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductTitle)
+                            </td>
+                            <td class="text-danger">
+                                <p><b>@item.ProductPrice.ToString("#,0") تومان</b></p>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Color)
+                            </td>
+                            <td>
+                                @if (item.Warranty == null)
+                                {
+                                    <p>گارانتی اصالت و سلامت فیزیکی</p>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.Warranty)
+                                }
+                            </td>
+                            <td class="text-success">
+                                <p><b>@item.ProductPriceSum.ToString("#,0") تومان</b></p>
+                            </td>
+                        </tr>
+                    }
+                    <tr class="totalInvoice">
+                        <th>جمع فاکتور</th>
+                        <td class="text-success text-left"><b>@Model.Sum(o=>o.ProductPriceSum).ToString("#,0") تومان</b></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col col-12">
+        <div class="row">
+            <div class="col-12 text-center userInvoiceDetails" >
+                <h4>مشخصات تکمیلی</h4><br />
+                <div class="row" id="extraInfoInvoice">
+                    <div class="col-md-4">
+                        <span>تاریخ ثبت سفارش : @payment.PaymentDate.ToShamsi()</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>نحوه پرداخت : @payment.PaymentMethod</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>کد رهگیری پرداخت : @payment.TrackingCode</span>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-left signInvoice">
+        مهر و امضا فروشگاه
+    </div>
+    <div class="col-6 psInvoice">
+        <ul>
+            <li>
+                <p>این فاکتور بدون مهر و امضا ، فاقد اعتبار رسمی می باشد !</p>
+            </li>
+            <li>
+                <p>در صورت بروز ایراد فنی برای کالا های دارای گارانتی ضمانت و سلامت فیزیکی ، میتوانید تا نهایتا 7 روز پس از تاریخ صدور این فاکتور به فروشگاه
+                    مراجعه کرده و نسبت به مرجوع کردن کالا اقدام نمایید و یا درخواست خود را از طریق سایت ثبت نمایید !
+                </p>
+            </li>
+            <li>
+                <p>آدرس و شماره تماس فروشگاه :</p>
+                <p>تهران ، خیابان ولیعصر ، مجتمع نور تهران , طبقه دوم ، پلاک 13333 - 0218574123</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        function Print() {
+            window.print();
+        }
+    </script>
+    <script>
+        window.onload = function() { window.print(); }
+    </script>
+}

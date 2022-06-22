@@ -1,0 +1,109 @@
+﻿@using DiasComputer.Utility.Convertors
+@model List<DiasComputer.DataLayer.Entities.Orders.TransactionHistory>
+@{
+    ViewData["Title"] = "لیست تراکنش های کاربر";
+}
+
+@if (!Model.Any())
+{
+    <div class="margin-pages col-12 text-center">
+        <h3>تاکنون تراکنشی توسط این کاربر ثبت نشده است</h3>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+else
+{
+    <div class="margin-pages col-12">
+        <h1>تراکنش ها</h1>
+        <table class="table table-responsive-lg col-12 table-striped">
+            <thead>
+            <tr>
+                <th>
+                    <p>شناسه تراکنش</p>
+                </th>
+                <th>
+                    <p>شماره سفارش</p>
+                </th>
+                <th>
+                    <p>تاریخ تراکنش</p>
+                </th>
+                <th>
+                    <p>مبلغ تراکنش</p>
+                </th>
+                <th>
+                    <p>نوع تراکنش</p>
+                </th>
+                <th>
+                    <p>تراکنش کیف پول</p>
+                </th>
+                <th>
+                    <p>تایید شده</p>
+                </th>
+                <th>
+                    <p>روش پرداخت</p>
+                </th>
+                <th>
+                    <p>کد رهگیری</p>
+                </th>
+                <th>
+                    <p>توضیحات</p>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var transaction in Model)
+                {
+                    <tr>
+                        <td>
+                            <p>@transaction.TH_Id</p>
+                        </td>
+                        @if (transaction.OrderId != null)
+                        {
+                            <td>
+                                <a asp-action="OrderDetails" asp-controller="User" asp-route-orderId="@transaction.OrderId">
+                                    <p>DC-@transaction.OrderId</p>
+                                </a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                        <td>
+                            <p>@transaction.Date.ToShamsi()</p>
+                        </td>
+                        <td>
+                            <p>@transaction.Amount.ToString("#,0") تومان</p>
+                        </td>
+                        <td>
+                            @switch (transaction.TypeId)
+                            {
+                                case 1:<p class="text-success">واریز</p>
+                                    break;
+                                case 2:<p class="text-danger">برداشت</p>
+                                    break;
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => transaction.IsWalletTransaction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => transaction.IsApproved)
+                        </td>
+                        <td>
+                            <p class="text-info">@transaction.PaymentMethod</p>
+                        </td>
+                        <td>
+                            <p>@transaction.TrackingCode</p>
+                        </td>
+                        <td>
+                            <p>@transaction.Description</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">بازگشت به لیست کاربران</a>
+    </div>
+}
+
